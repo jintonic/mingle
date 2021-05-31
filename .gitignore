@@ -1,32 +1,10 @@
-# Prerequisites
-*.d
+# ignore build directory
+*build*
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# ignore executable
+tiny
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# ignore backup files
+\#*
+.swp
+*~
