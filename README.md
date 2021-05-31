@@ -19,7 +19,7 @@ $ ./tiny
 
 ## Tags
 
-Believe it or not, less than ten lines of C++ are enough to create a Geant4 application that can be launched. A tag "minimum" is created for you to quickly download it:
+Believe it or not, less than ten lines of C++ are enough to create a Geant4 application that can be launched. A tag [minimum](https://github.com/jintonic/tiny/releases/tag/minimum) is created for you to quickly switch to it:
 
 ```sh
 $ git clone https://github.com/jintonic/tiny.git
@@ -42,4 +42,4 @@ SUM:                             3              4              0             13
 -------------------------------------------------------------------------------
 ```
 
-Whenever a new Geant4 component is added on top of "minimum", a new tag is created. You can check them out one by one to see how a Geant4 application is developed from scratch.
+Whenever a new Geant4 component is added on top of "minimum", a new [tag](https://github.com/jintonic/tiny/tags) is created. You can check them out one by one to see how a Geant4 application is developed from scratch.
