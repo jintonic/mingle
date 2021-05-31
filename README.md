@@ -1,9 +1,12 @@
-Tiny, the smallest Geant4 application in the world (six lines of C++), is created to demonstrate the usage of essential Geant4 components step by step. It also serves as a starting point of writing your own Geant4 application.
+Tiny, the smallest Geant4 application in the world, demonstrates the usage of essential Geant4 components step by step. It also serves as a starting point of writing your own Geant4 application.
 
 ## Pre-requisition
 - [Geant4](https://geant4.web.cern.ch/support/download)
 - [CMake](https://cmake.org/download/)
-- A not-so-old C++ compiler
+- A not-so-old C++ compiler, e.g.
+  - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
+  - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
+  - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install`
 
 ## Usage
 
