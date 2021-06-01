@@ -1,4 +1,4 @@
-Tiny, the smallest Geant4 application in the world, demonstrates the usage of essential Geant4 components step by step. It also serves as a starting point of writing your own Geant4 application.
+MinGLE, a Mini Geant4 Learning Example, uses minimal C++ coding to demonstrate the usage of essential Geant4 components step by step. It also serves as a starting point of writing your own Geant4 applications.
 
 ## Pre-requisition
 - [Geant4](https://geant4.web.cern.ch/support/download)
@@ -11,22 +11,22 @@ Tiny, the smallest Geant4 application in the world, demonstrates the usage of es
 ## Usage
 
 ```sh
-$ git clone https://github.com/jintonic/tiny.git
-$ cd tiny
+$ git clone https://github.com/jintonic/mingle.git
+$ cd mingle
 $ mkdir build
 $ cd build
 $ ccmake ..
 $ make
-$ ./tiny
+$ ./mingle
 ```
 
 ## Tags
 
-Believe it or not, less than ten lines of C++ are enough to create a Geant4 application that can be launched. A tag [minimum](https://github.com/jintonic/tiny/releases/tag/minimum) is created for you to quickly switch to it:
+Believe it or not, less than ten lines of C++ are enough to create a Geant4 application that can be launched. A tag [minimum](https://github.com/jintonic/mingle/releases/tag/minimum) is created for you to quickly switch to it:
 
 ```sh
-$ git clone https://github.com/jintonic/tiny.git
-$ cd tiny
+$ git clone https://github.com/jintonic/mingle.git
+$ cd mingle
 $ git checkout tags/minimum
 $ cloc .
        5 text files.
@@ -45,4 +45,4 @@ SUM:                             3              4              0             13
 -------------------------------------------------------------------------------
 ```
 
-Whenever a new Geant4 component is added on top of "minimum", a new [tag](https://github.com/jintonic/tiny/tags) is created. You can check them out one by one to see how a Geant4 application is developed from scratch.
+Whenever a new Geant4 component is added on top of "minimum", a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a Geant4 application is developed from scratch.
