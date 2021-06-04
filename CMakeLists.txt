@@ -5,7 +5,7 @@ project(mingle) # project name
 find_package(Geant4 REQUIRED ui_all vis_all) # search for Geant4Config.cmake
 include(${Geant4_USE_FILE}) # Linux cannot find Geant4 header files without it
 add_executable(mingle mingle.cc)
-target_link_libraries(tiny ${Geant4_LIBRARIES})
+target_link_libraries(mingle ${Geant4_LIBRARIES})
 
 if(WIN32)
   # remove Debug and other unnecessary configurations
