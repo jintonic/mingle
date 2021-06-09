@@ -1,7 +1,7 @@
 MinGLE, a Mini Geant4 Learning Example, uses minimal C++ coding to demonstrate the usage of essential Geant4 components step by step. It also serves as a starting point of writing your own Geant4 applications.
 
 ## Prerequisites
-- [Geant4](https://geant4.web.cern.ch/support/download)
+- [Geant4](https://geant4.web.cern.ch/support/download) 10.7 or above
 - [CMake](https://cmake.org/download/)
 - A not-so-old C++ compiler, e.g.
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
