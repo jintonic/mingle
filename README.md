@@ -96,4 +96,17 @@ The [batch](https://github.com/jintonic/mingle/releases/tag/batch) tag marks a v
 $ ./build/mingle run.mac
 ```
 
+### Run
+The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `mingle` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] [Managers][runman] using an environment variable `G4RUN_MANAGER_TYPE`:
+
+```sh
+# run mingle in serial mode
+$ G4RUN_MANAGER_TYPE=Serial ./build/mingle
+# run mingle in multithreaded mode
+$ G4RUN_MANAGER_TYPE=MT ./build/mingle
+```
+
 [Geant4]: https://geant4.web.cern.ch
+[Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
+[runman]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html#manage-the-run-procedures
+[G4RunManagerFactory]: https://gitlab.cern.ch/geant4/geant4/-/tree/master/source/tasking#g4runmanagerfactory
