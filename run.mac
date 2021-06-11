@@ -1,1 +1,6 @@
-/control/manual /units
+# display applied commands on screen
+/control/verbose 2
+
+# add more menu items in GUI 
+/control/ifInteractive gui.mac
+
