@@ -29,6 +29,8 @@ $ ./mingle
 $ cd ..
 # run mingle in TUI even if there is GUI
 $ G4UI_USE_TCSH=1 ./build/mingle
+```
+```sh
 Available UI session types: [ Qt, GAG, tcsh, csh ]
 PreInit> ls
 Command directory path : /
@@ -102,8 +104,32 @@ The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a versi
 ```sh
 # run mingle in serial mode
 $ G4RUN_MANAGER_TYPE=Serial ./build/mingle
+Environment variable "G4RUN_MANAGER_TYPE" enabled with value == Serial. Overriding G4RunManager type...
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-01 [MT]   (5-February-2021)
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+```
+```sh
 # run mingle in multithreaded mode
 $ G4RUN_MANAGER_TYPE=MT ./build/mingle
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-01 [MT]   (5-February-2021)
+  << in Multi-threaded mode >>
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+Available UI session types: [ Qt, GAG, tcsh, csh ]
+
 ```
 
 [Geant4]: https://geant4.web.cern.ch
