@@ -59,7 +59,7 @@ PreInit> exit
 $
 ```
 
-Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commends. Lines start with '#' are comments, they cannot be run.
+Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commands. Lines start with '#' are comments, they cannot be run.
 
 ## Tags
 
