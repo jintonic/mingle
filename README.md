@@ -1,11 +1,12 @@
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
-[![shimo](https://img.shields.io/badge/石-墨-gray?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
+[![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
 
 MinGLE, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It also serves as a starting point of writing your own [Geant4][] applications.
 
 ## Prerequisites
-- [Geant4][] 10.7 or above
+- [Geant4][] 10.7 or above is needed to use
+  - [G4RunManagerFactory][]
 - [CMake](https://cmake.org/download/)
 - A not-so-old C++ compiler, e.g.
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
