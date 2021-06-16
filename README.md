@@ -2,7 +2,7 @@
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
 [![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
 
-MinGLE, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It also serves as a starting point of writing your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
 ## Prerequisites
 - [Geant4][] 10.7 or above is needed to use
@@ -67,6 +67,7 @@ $
 Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commands. Lines start with '#' are comments, they cannot be run.
 
 ## Tags
+Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
 
 ### Minimum
 Believe it or not, less than ten lines of C++ are enough to create a [Geant4][] application that can be launched. A tag [minimum](https://github.com/jintonic/mingle/releases/tag/minimum) is created for you to quickly switch to it:
@@ -93,10 +94,10 @@ C++                              1              1              0              6
 $ git checkout -
 ```
 
-Whenever a new [Geant4][] component is added on top of "minimum", a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
+This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a veriety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
 
 ### Batch
-The [batch](https://github.com/jintonic/mingle/releases/tag/batch) tag marks a version of `mingle` that can be run both interactively and in the so-called batch mode, where `mingle` can execute [Geant4][] commands saved in a macro file (for example, [run.mac](run.mac)) without getting into any user interface.
+The [batch](https://github.com/jintonic/mingle/releases/tag/batch) tag marks a version of `MinGLE` that can be run both interactively and in the so-called batch mode, where `MinGLE` can execute [Geant4][] commands saved in a macro file (for example, [run.mac](run.mac)) without getting into any interactive user interface (UI).
 
 ```sh
 # run mingle in batch mode
@@ -104,7 +105,7 @@ $ ./build/mingle run.mac
 ```
 
 ### Run
-The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `mingle` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] [Managers][runman] using an environment variable `G4RUN_MANAGER_TYPE`:
+The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `MinGLE` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] [Managers][runman] using an environment variable `G4RUN_MANAGER_TYPE`:
 
 ```sh
 # run mingle in serial mode
@@ -134,10 +135,10 @@ $ G4RUN_MANAGER_TYPE=MT ./build/mingle
 **************************************************************
 
 Available UI session types: [ Qt, GAG, tcsh, csh ]
-
 ```
 
 [Geant4]: https://geant4.web.cern.ch
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
 [runman]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html#manage-the-run-procedures
 [G4RunManagerFactory]: https://gitlab.cern.ch/geant4/geant4/-/tree/master/source/tasking#g4runmanagerfactory
+[G4UIExecutive]: https://apc.u-paris.fr/~franco/g4doxy/html/classG4UIExecutive.html
