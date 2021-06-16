@@ -133,8 +133,6 @@ $ G4RUN_MANAGER_TYPE=MT ./build/mingle
                                  : NIM A 835 (2016), 186-225
                              WWW : http://geant4.org/
 **************************************************************
-
-Available UI session types: [ Qt, GAG, tcsh, csh ]
 ```
 
 [Geant4]: https://geant4.web.cern.ch
