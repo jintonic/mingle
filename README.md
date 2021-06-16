@@ -13,7 +13,9 @@
   - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
   - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install` in a terminal
 
-## Usage
+## Getting started
+
+If you know how to use [Git][], please follow the instruction below. If you don't, please download a specific version of `MinGLE` from [here](https://github.com/jintonic/mingle/tags).
 
 ```sh
 # download mingle git repository from github to a local hard disk
@@ -135,6 +137,7 @@ $ G4RUN_MANAGER_TYPE=MT ./build/mingle
 **************************************************************
 ```
 
+[Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
 [runman]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html#manage-the-run-procedures
