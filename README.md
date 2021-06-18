@@ -108,7 +108,7 @@ $ ./build/mingle run.mac
 ```
 
 ### Run
-The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `MinGLE` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] [Managers][runman] using an environment variable `G4RUN_MANAGER_TYPE`:
+The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `MinGLE` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching between various run managers using an environment variable `G4RUN_MANAGER_TYPE`:
 
 ```sh
 # run mingle in serial mode
@@ -138,8 +138,8 @@ $ G4RUN_MANAGER_TYPE=MT ./build/mingle
 **************************************************************
 ```
 
-### physics
-The [physics](https://github.com/jintonic/mingle/releases/tag/physics) tag marks a version of `MinGLE` that creates a [physics list][physlist] using [G4PhysListFactory][], which allows the switching in between various [physics list][physlist] using an environment variable `PHYSLIST`:
+### Physics
+The [physics](https://github.com/jintonic/mingle/releases/tag/physics) tag marks a version of `MinGLE` that creates a [physics list][physlist] using [G4PhysListFactory][], which allows the switching between various physics lists using an environment variable `PHYSLIST`:
 
 ```sh
 $ PHYSLIST=FTFP_BERT_EMV ./mingle
