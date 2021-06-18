@@ -14,6 +14,7 @@
   - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install` in a terminal
 
 ## Getting started
+[![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://youtu.be/6xqCtS38SXQ)
 
 If you know how to use [Git][], please follow the instruction below. If you don't, please download a specific version of `MinGLE` from [here](https://github.com/jintonic/mingle/tags).
 
