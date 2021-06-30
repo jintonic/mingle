@@ -171,7 +171,7 @@ The [detector](https://github.com/jintonic/mingle/releases/tag/detector) tag mar
 
 Same definition written in C++ required more than 5 lines of code. In addition to its simplicity, the text geometry definition can be modified and loaded without recompiling the C++ code. More importantly, the separation of detector definition from the C++ program makes the latter more universal as it is not associated with any specific detector. `MinGLE` hence can be used for the simulation of any detector without modifying and compiling the C++ code. The last advantage of using the [text geometry definition][tg] instead of C++ is to keep the length of the C++ program unchanged no matter how complicated the detector definition becomes.
 
-To use the geometry defined in [detector.tg](detector.tg), the file must be placed in the directory where `mingle` is executed. For example,
+To use the geometry defined in [detector.tg](detector.tg), the file must be placed in the directory where `mingle` is executed. Otherwise, Geant4 will complain that `detector.tg` file does not exist. For example,
 
 ```sh
 $ cd /path/to/mingle
@@ -182,6 +182,19 @@ LICENSE        build/         gui.mac        run.mac
 $ ./build/mingle
 # in Git Bash in Windows
 $ ./build/Release/mingle.exe
+# if we run mingle in build/ where there is no detector.tg
+$ cd build
+$ ./mingle
+-------- EEEE ------- G4Exception-START -------- EEEE -------
+*** G4Exception : InvalidInput
+      issued by : G4tgrFileIn::OpenNewFile()
+Input file does not exist: detector.tg
+*** Fatal Exception *** core dump ***
+ **** Track information is not available at this moment
+ **** Step information is not available at this moment
+-------- EEEE -------- G4Exception-END --------- EEEE -------
+*** G4Exception: Aborting execution ***
+Abort trap: 6
 ```
 
 [Git]: http://git-scm.com
