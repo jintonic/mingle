@@ -162,6 +162,28 @@ Available UI session types: [ GAG, tcsh, csh ]
 PreInit>
 ```
 
+### Detector
+The [detector](https://github.com/jintonic/mingle/releases/tag/detector) tag marks a version of `MinGLE` that can [load detector definition from a text file][tg], [detector.tg](detector.tg), where a 10 x 10 x 10 cubic meter experimental hall filled with air is defined using a [simple syntax introduced since Geant4.9.2][tg] as a simple example:
+
+```
+:volu hall BOX 5*m 5*m 5*m G4_AIR
+```
+
+Same definition written in C++ required more than 5 lines of code. In addition to its simplicity, the text geometry definition can be modified and loaded without recompiling the C++ code. More importantly, the separation of detector definition from the C++ program makes the latter more universal as it is not associated with any specific detector. `MinGLE` hence can be used for the simulation of any detector without modifying and compiling the C++ code. The last advantage of using the [text geometry definition][tg] instead of C++ is to keep the length of the C++ program unchanged no matter how complicated the detector definition becomes.
+
+To use the geometry defined in [detector.tg](detector.tg), the file must be placed in the directory where `mingle` is executed. For example,
+
+```sh
+$ cd /path/to/mingle
+$ ls -F
+CMakeLists.txt README.md      detector.tg    mingle.cc
+LICENSE        build/         gui.mac        run.mac
+# in a Linux or Mac terminal
+$ ./build/mingle
+# in Git Bash in Windows
+$ ./build/Release/mingle.exe
+```
+
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
@@ -170,3 +192,4 @@ PreInit>
 [runman]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html#manage-the-run-procedures
 [G4RunManagerFactory]: https://gitlab.cern.ch/geant4/geant4/-/tree/master/source/tasking#g4runmanagerfactory
 [G4UIExecutive]: https://apc.u-paris.fr/~franco/g4doxy/html/classG4UIExecutive.html
+[tg]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomASCII.html
