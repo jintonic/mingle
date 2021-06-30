@@ -1,0 +1,3 @@
+// define a 10x10x10 m3 cubic hall filled with air
+:volu hall BOX 5*m 5*m 5*m G4_AIR
+
