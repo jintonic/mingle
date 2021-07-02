@@ -182,9 +182,22 @@ LICENSE        build/         gui.mac        run.mac
 $ ./build/mingle
 # in Git Bash in Windows
 $ ./build/Release/mingle.exe
+PreInit> /run/initialize
+... a lot of output, until
+-------- EEEE ------- G4Exception-START -------- EEEE -------
+*** G4Exception : Run0032
+      issued by : G4RunManager::GenerateEvent()
+G4VUserPrimaryGeneratorAction is not defined!
+*** Fatal Exception *** core dump ***
+# The error appears because we have not defined a particle generator,
+# not because our detector definition is wrong.
+
 # if we run mingle in build/ where there is no detector.tg
 $ cd build
 $ ./mingle
+PreInit> /run/initialize
+# you will immediately see the following fatal error,
+# complaining that detector.tg cannot be found:
 -------- EEEE ------- G4Exception-START -------- EEEE -------
 *** G4Exception : InvalidInput
       issued by : G4tgrFileIn::OpenNewFile()
