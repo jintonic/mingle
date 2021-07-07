@@ -1,13 +1,14 @@
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
 [![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
+[![tags](https://img.shields.io/badge/Development-history-yellow?style=flat)](#tags)
 
 `MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
 ## Prerequisites
 - [Geant4][] 10.7 or above is needed to use
   - [G4RunManagerFactory][]
-- [CMake](https://cmake.org/download/)
+- [CMake](https://cmake.org/download/) 2.9 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
 - A not-so-old C++ compiler, e.g.
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
   - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
@@ -210,6 +211,39 @@ Input file does not exist: detector.tg
 Abort trap: 6
 ```
 
+### Generator
+The [generator](https://github.com/jintonic/mingle/releases/tag/generator) tag marks a version of `MinGLE` that uses the [Geant4][] general particle source ([GPS][]) to generate [primary particles][], from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
+
+<img src="https://github.com/jintonic/gears/blob/master/examples/output/tracks.png" style="width:100%" alt="tracks.png">
+
+The up-to-date examples of [GPS][] are shipped together with the [Geant4][] source code in the folder:
+
+- [geant4/examples/extended/eventgenerator/exgps/macros](https://gitlab.cern.ch/geant4/geant4/tree/master/examples/extended/eventgenerator/exgps/macros)
+
+An [outdated webpage](http://hurel.hanyang.ac.kr/Geant4/Geant4_GPS/reat.space.qinetiq.com/gps/examples/examples.html) shows most of the examples contained in the folder above. In addition, it also shows resulted distribution plots, which are very helpful to understand the real effects of the [GPS][] macro commands.
+
+An ASCII version of the manual of [GPS][] macros is available [here](https://github.com/jintonic/gears/blob/master/examples/sources/gps.txt).
+
+[run.mac](run.mac) is updated in this version to demonstrate how to shoot 2 MeV electrons to our geometry and print simulation steps one by one on screen:
+
+```sh
+$ cd /path/to/mingle
+$ ./build/mingle run.mac
+...
+G4WT0 > *********************************************************************************************************
+G4WT0 > * G4Track Information:   Particle = e-,   Track ID = 1,   Parent ID = 0
+G4WT0 > *********************************************************************************************************
+G4WT0 > 
+G4WT0 > Step#    X(mm)    Y(mm)    Z(mm) KinE(MeV)  dE(MeV) StepLeng TrackLeng  NextVolume ProcName
+G4WT0 >     0   -4e+03        0        0         2        0        0         0        hall initStep
+G4WT0 >     1 -3.96e+03   -0.676    -1.63      1.99   0.0047     44.7      44.7        hall eIoni
+G4WT0 >     :----- List of 2ndaries - #SpawnInStep=  1(Rest= 0,Along= 0,Post= 1), #SpawnTotal=  1 ---------------
+G4WT0 >     : -3.96e+03    -0.676     -1.63   0.00105                 e-
+G4WT0 >     :----------------------------------------------------------------- EndOf2ndaries Info ---------------
+G4WT0 >     2 -3.79e+03    -13.2    -1.32      1.97   0.0204      165       209        hall eIoni
+...
+```
+
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
@@ -219,3 +253,5 @@ Abort trap: 6
 [G4RunManagerFactory]: https://gitlab.cern.ch/geant4/geant4/-/tree/master/source/tasking#g4runmanagerfactory
 [G4UIExecutive]: https://apc.u-paris.fr/~franco/g4doxy/html/classG4UIExecutive.html
 [tg]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomASCII.html
+[GPS]: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
+[primary particles]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/eventDef.html
