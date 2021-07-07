@@ -1,7 +1,7 @@
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
 [![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
-[![tags](https://img.shields.io/badge/Development-history-yellow?style=flat)](#tags)
+[![tags](https://img.shields.io/badge/Development-History-orange?style=flat)](#tags)
 
 `MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
@@ -71,6 +71,13 @@ $
 Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commands. Lines start with '#' are comments, they cannot be run.
 
 ## Tags
+[![minimum](https://img.shields.io/badge/mini-mum-red?style=flat)](#minimum)
+[![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
+[![run](https://img.shields.io/badge/+-run-yellow?style=flat)](#run)
+[![physics](https://img.shields.io/badge/+-physics-green?style=flat)](#physics)
+[![detector](https://img.shields.io/badge/+-detector-brightgreen?style=flat)](#detector)
+[![generator](https://img.shields.io/badge/+-generator-blue?style=flat)](#generator)
+
 Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
 
 ### Minimum
@@ -222,7 +229,7 @@ The up-to-date examples of [GPS][] are shipped together with the [Geant4][] sour
 
 An [outdated webpage](http://hurel.hanyang.ac.kr/Geant4/Geant4_GPS/reat.space.qinetiq.com/gps/examples/examples.html) shows most of the examples contained in the folder above. In addition, it also shows resulted distribution plots, which are very helpful to understand the real effects of the [GPS][] macro commands.
 
-An ASCII version of the manual of [GPS][] macros is available [here](https://github.com/jintonic/gears/blob/master/examples/sources/gps.txt).
+An ASCII version of the manual of [GPS][] macros is available [here](https://raw.githubusercontent.com/jintonic/gears/master/examples/sources/gps.txt).
 
 [run.mac](run.mac) is updated in this version to demonstrate how to shoot 2 MeV electrons to our geometry and print simulation steps one by one on screen:
 
