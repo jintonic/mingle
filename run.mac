@@ -4,3 +4,24 @@
 # add more menu items in GUI 
 /control/ifInteractive gui.mac
 
+# create detector geometry and physics processes
+/run/initialize
+
+# check overlapping in between detector volumes
+/geometry/test/run
+
+# shoot 2 MeV electrons to positive x direction
+/gps/particle e-
+/gps/energy 2 MeV
+/gps/pos/centre -4 0 0 m
+/gps/direction 1 0 0
+
+# print every step of simulation on screen
+/tracking/verbose 2
+
+# set random seeds
+/random/setSeeds 23 234 53 89 157
+
+# simulate one event
+/run/beamOn 1
+
