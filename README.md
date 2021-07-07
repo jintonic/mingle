@@ -71,7 +71,7 @@ $
 Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commands. Lines start with '#' are comments, they cannot be run.
 
 ## Tags
-[![minimum](https://img.shields.io/badge/mini-mum-red?style=flat)](#minimum)
+[![minimum](https://img.shields.io/badge/-minimum-red?style=flat)](#minimum)
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
 [![run](https://img.shields.io/badge/+-run-yellow?style=flat)](#run)
 [![physics](https://img.shields.io/badge/+-physics-green?style=flat)](#physics)
