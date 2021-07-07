@@ -4,8 +4,6 @@
 class Detector : public G4VUserDetectorConstruction
 {
 	public:
-		Detector() : G4VUserDetectorConstruction() {};
-
 		G4VPhysicalVolume* Construct() {
 			G4tgbVolumeMgr::GetInstance()->AddTextFile("detector.tg");
 			return G4tgbVolumeMgr::GetInstance()->ReadAndConstructDetector();
