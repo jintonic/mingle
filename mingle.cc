@@ -12,6 +12,31 @@ class Detector : public G4VUserDetectorConstruction
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+#include <G4VUserPrimaryGeneratorAction.hh>
+#include <G4GeneralParticleSource.hh>
+
+class Generator : public G4VUserPrimaryGeneratorAction
+{
+	private:
+		G4GeneralParticleSource* fGPS;
+	public:
+		Generator() : G4VUserPrimaryGeneratorAction() {
+		 	fGPS = new G4GeneralParticleSource; }
+		void GeneratePrimaries(G4Event *evt) { fGPS->GeneratePrimaryVertex(evt); }
+};
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+#include <G4VUserActionInitialization.hh>
+
+class Action : public G4VUserActionInitialization
+{
+	public:
+		void Build() const { SetUserAction(new Generator); }
+};
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
 #include <G4RunManagerFactory.hh>
 #include <G4PhysListFactory.hh>
 #include <G4UIExecutive.hh>
@@ -25,6 +50,8 @@ int main(int argc,char** argv)
 	run->SetUserInitialization(factory.ReferencePhysList());
 
 	run->SetUserInitialization(new Detector);
+
+	run->SetUserInitialization(new Action);
 
 	if (argc==1) { // interactive mode
 		G4UIExecutive ui(argc, argv);
