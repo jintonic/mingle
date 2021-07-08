@@ -1,4 +1,4 @@
-<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="40%" align="right">
+<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="30%" align="right">
 
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
