@@ -1,4 +1,4 @@
-<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="30%" align="right">
+<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="35%" align="right">
 
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
@@ -110,6 +110,8 @@ $ git checkout -
 This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a veriety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
 
 ### Batch
+[![run](https://img.shields.io/badge/+-run-yellow?style=flat)](#run)
+
 The [batch](https://github.com/jintonic/mingle/releases/tag/batch) tag marks a version of `MinGLE` that can be run both interactively and in the so-called batch mode, where `MinGLE` can execute [Geant4][] commands saved in a macro file (for example, [run.mac](run.mac)) without getting into any interactive user interface (UI).
 
 ```sh
@@ -118,6 +120,8 @@ $ ./build/mingle run.mac
 ```
 
 ### Run
+[![physics](https://img.shields.io/badge/+-physics-green?style=flat)](#physics)
+
 The [run](https://github.com/jintonic/mingle/releases/tag/run) tag marks a version of `MinGLE` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching between various run managers using an environment variable `G4RUN_MANAGER_TYPE`:
 
 ```sh
@@ -149,6 +153,8 @@ $ G4RUN_MANAGER_TYPE=MT ./build/mingle
 ```
 
 ### Physics
+[![detector](https://img.shields.io/badge/+-detector-brightgreen?style=flat)](#detector)
+
 The [physics](https://github.com/jintonic/mingle/releases/tag/physics) tag marks a version of `MinGLE` that creates a [physics list][physlist] using [G4PhysListFactory][], which allows the switching between various physics lists using an environment variable `PHYSLIST`:
 
 ```sh
@@ -173,6 +179,8 @@ PreInit>
 ```
 
 ### Detector
+[![generator](https://img.shields.io/badge/+-generator-blue?style=flat)](#generator)
+
 The [detector](https://github.com/jintonic/mingle/releases/tag/detector) tag marks a version of `MinGLE` that can [load detector definition from a text file][tg], [detector.tg](detector.tg), where a 10 x 10 x 10 cubic meter experimental hall filled with air is defined using a [simple syntax introduced since Geant4.9.2][tg] as a simple example:
 
 ```
@@ -221,6 +229,8 @@ Abort trap: 6
 ```
 
 ### Generator
+[![detector](https://img.shields.io/badge/---generator-brightgreen?style=flat)](#detector)
+
 The [generator](https://github.com/jintonic/mingle/releases/tag/generator) tag marks a version of `MinGLE` that uses the [Geant4][] general particle source ([GPS][]) to generate [primary particles][], from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
 
 <img src="https://github.com/jintonic/gears/blob/master/examples/output/tracks.png" style="width:100%" alt="tracks.png">
