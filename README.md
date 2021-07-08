@@ -1,9 +1,8 @@
-<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="35%" align="right">
-
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://www.youtube.com/playlist?list=PLw3G-vTgPrdCkTdisAL5UdUPazZdjqlpm)
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
 [![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
 [![tags](https://img.shields.io/badge/Development-History-orange?style=flat)](#tags)
+<img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="35%" align="right">
 
 `MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
