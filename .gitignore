@@ -1,5 +1,6 @@
 # ignore build directory
 *build*
+.vs
 
 # ignore backup files
 \#*
