@@ -1,3 +1,15 @@
 // define a 10x10x10 m3 cubic hall filled with air
 :volu hall BOX 5*m 5*m 5*m G4_AIR
+:vis hall OFF
+
+// define a cylindrical vacuum chamber made of stainless steel
+:volu chamber TUBE 0 1*m 1*m G4_STAINLESS-STEEL
+:color chamber 0.3 0.7 0.2
+
+:volu vacuum TUBE 0 0.99*m 0.99*m G4_Galactic
+:color vacuum 0.3 0.7 0.2
+
+:rotm r000 0 0 0
+:place chamber 1 hall r000 0 0 0
+:place vacuum 2 chamber r000 0 0 0
 
