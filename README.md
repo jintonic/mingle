@@ -236,6 +236,7 @@ Abort trap: 6
 
 ### Generator
 [![detector](https://img.shields.io/badge/previous-tag-brightgreen?style=flat)](#detector)
+[![visualization](https://img.shields.io/badge/+-visualization-blueviolet?style=flat)](#visualization)
 
 The [generator](https://github.com/jintonic/mingle/releases/tag/generator) tag marks a version of `MinGLE` that uses the [Geant4][] general particle source ([GPS][]) to generate [primary particles][], from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
 
@@ -279,7 +280,7 @@ $ cd /path/to/mingle
 $ ./build/mingle vis.mac
 ```
 
-to generate various visualization output files. A detailed description on each visualization method is available [here](http://physino.xyz/gears/examples/detector/visualization).
+to generate various visualization output files. A detailed description on each visualization method is available [here](http://physino.xyz/gears/examples/detector/visualization). 
 
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
