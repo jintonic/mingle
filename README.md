@@ -78,6 +78,7 @@ Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org
 [![physics](https://img.shields.io/badge/+-physics-green?style=flat)](#physics)
 [![detector](https://img.shields.io/badge/+-detector-brightgreen?style=flat)](#detector)
 [![generator](https://img.shields.io/badge/+-generator-blue?style=flat)](#generator)
+[![visualization](https://img.shields.io/badge/+-visualization-blueviolet?style=flat)](#visualization)
 
 Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
 
@@ -268,6 +269,18 @@ G4WT0 >     2 -3.79e+03    -13.2    -1.32      1.97   0.0204      165       209 
 ...
 ```
 
+### Visualization
+[![generator](https://img.shields.io/badge/previous-tag-blue?style=flat)](#generator)
+
+The [visualization](https://github.com/jintonic/mingle/releases/tag/visualization) tag marks a version of `MinGLE` that uses [Geant4][] [visualization drivers][vis] to visualize detector geometry and particle trajectories. Run the following commands
+
+```sh
+$ cd /path/to/mingle
+$ ./build/mingle vis.mac
+```
+
+to generate various visualization output files. A detailed description on each visualization method is available [here](http://physino.xyz/gears/examples/detector/visualization).
+
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
@@ -279,3 +292,4 @@ G4WT0 >     2 -3.79e+03    -13.2    -1.32      1.97   0.0204      165       209 
 [tg]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomASCII.html
 [GPS]: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
 [primary particles]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/eventDef.html
+[vis]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/visualization.html
