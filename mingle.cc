@@ -39,7 +39,9 @@ class Action : public G4VUserActionInitialization
 
 #include <G4RunManagerFactory.hh>
 #include <G4PhysListFactory.hh>
+#include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
+#include <G4VisManager.hh>
 #include <G4UImanager.hh>
 
 int main(int argc,char** argv)
@@ -53,6 +55,8 @@ int main(int argc,char** argv)
 
 	run->SetUserInitialization(new Action);
 
+	G4VisManager *vis = new G4VisExecutive("quiet"); vis->Initialize();
+
 	if (argc==1) { // interactive mode
 		G4UIExecutive ui(argc, argv);
 		ui.SessionStart();
@@ -61,5 +65,5 @@ int main(int argc,char** argv)
 		G4UImanager::GetUIpointer()->ApplyCommand(command+argv[1]);
 	}
 
-	delete run;
+	delete vis; delete run;
 }
