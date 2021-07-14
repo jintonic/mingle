@@ -19,5 +19,7 @@
 
 /gui/addMenu vis Visualization
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
-/gui/addButton vis "Take Screenshot" "/vis/ogl/export g4OpenGL.png"
+/gui/addButton vis "Zoom in" "/vis/viewer/zoom 1.2"
+/gui/addButton vis "Zoom out" "/vis/viewer/zoom 0.8"
+/gui/addButton vis "Take Screenshot" "/vis/ogl/export g4OpenGL.pdf"
 
