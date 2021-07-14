@@ -1,27 +1,29 @@
 # display applied commands on screen
 /control/verbose 2
 
-# add more menu items in GUI 
-/control/ifInteractive gui.mac
-
-# create detector geometry and physics processes
+# construct detector geometry and physics processes
 /run/initialize
 
 # check overlapping in between detector volumes
 /geometry/test/run
 
-# shoot 2 MeV electrons to positive x direction
-/gps/particle e-
-/gps/energy 2 MeV
-/gps/pos/centre -4 0 0 m
-/gps/direction 1 0 0
+# print hierarchical structure of detector components
+/vis/ASCIITree/verbose 13
+/vis/drawTree
 
 # print every step of simulation on screen
 /tracking/verbose 2
+# simulate a few events
+/run/beamOn 2
+
+# disable verbose output for serious simulation
+/vis/disable
+/tracking/verbose 0
 
 # set random seeds
 /random/setSeeds 23 234 53 89 157
 
-# simulate one event
-/run/beamOn 1
+/run/verbose 2
+/run/printProgress 10000
+/run/beamOn 100000
 
