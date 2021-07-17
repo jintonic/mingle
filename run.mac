@@ -11,6 +11,12 @@
 /vis/ASCIITree/verbose 13
 /vis/drawTree
 
+# shoot 2 MeV electrons to positive x direction
+/gps/particle e-
+/gps/energy 2 MeV
+/gps/pos/centre -4 0 0 m
+/gps/direction 1 0 0
+
 # print every step of simulation on screen
 /tracking/verbose 2
 # simulate a few events
