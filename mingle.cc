@@ -39,13 +39,17 @@ class Action : public G4VUserActionInitialization
 
 #include <G4RunManagerFactory.hh>
 #include <G4PhysListFactory.hh>
+#include <G4ScoringManager.hh>
 #include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
+#include <G4VisManager.hh>
 #include <G4UImanager.hh>
 
 int main(int argc,char** argv)
 {
 	auto *run = G4RunManagerFactory::CreateRunManager();
+
+	G4ScoringManager::GetScoringManager();
 
 	G4PhysListFactory factory;
 	run->SetUserInitialization(factory.ReferencePhysList());
