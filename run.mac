@@ -26,10 +26,22 @@
 /vis/disable
 /tracking/verbose 0
 
+/score/create/boxMesh mesh
+/score/mesh/boxSize 1. 1. 1. m
+/score/mesh/nBin 100 1 1
+/score/mesh/translate/xyz -3. 0. 0. m
+
+/score/quantity/nOfStep nOfStepEMinus
+/score/filter/particle eMinusFilter e-
+/score/close
+/score/list
+
 # set random seeds
 /random/setSeeds 23 234 53 89 157
 
 /run/verbose 2
-/run/printProgress 10000
-/run/beamOn 100000
+/run/printProgress 1000
+/run/beamOn 10000
+
+/score/dumpQuantityToFile mesh nOfStepEMinus nOfStepEMinus.txt
 
