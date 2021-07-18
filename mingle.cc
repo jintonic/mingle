@@ -11,7 +11,6 @@ class Detector : public G4VUserDetectorConstruction
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #include <G4VUserPrimaryGeneratorAction.hh>
 #include <G4GeneralParticleSource.hh>
 
@@ -21,12 +20,12 @@ class Generator : public G4VUserPrimaryGeneratorAction
 		G4GeneralParticleSource* fGPS;
 	public:
 		Generator() : G4VUserPrimaryGeneratorAction() {
-		 	fGPS = new G4GeneralParticleSource; }
+			fGPS = new G4GeneralParticleSource; }
+		~Generator() { delete fGPS; }
 		void GeneratePrimaries(G4Event *evt) { fGPS->GeneratePrimaryVertex(evt); }
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #include <G4VUserActionInitialization.hh>
 
 class Action : public G4VUserActionInitialization
@@ -36,7 +35,6 @@ class Action : public G4VUserActionInitialization
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #include <G4RunManagerFactory.hh>
 #include <G4PhysListFactory.hh>
 #include <G4ScoringManager.hh>
