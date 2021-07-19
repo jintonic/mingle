@@ -79,6 +79,7 @@ Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org
 [![detector](https://img.shields.io/badge/+-detector-brightgreen?style=flat)](#detector)
 [![generator](https://img.shields.io/badge/+-generator-blue?style=flat)](#generator)
 [![visualization](https://img.shields.io/badge/+-visualization-blueviolet?style=flat)](#visualization)
+[![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
 
 Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
 
@@ -272,6 +273,7 @@ G4WT0 >     2 -3.79e+03    -13.2    -1.32      1.97   0.0204      165       209 
 
 ### Visualization
 [![generator](https://img.shields.io/badge/previous-tag-blue?style=flat)](#generator)
+[![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
 
 The [visualization](https://github.com/jintonic/mingle/releases/tag/visualization) tag marks a version of `MinGLE` that uses [Geant4][] [visualization drivers][vis] to visualize detector geometry and particle trajectories. Run the following commands
 
@@ -280,7 +282,21 @@ $ cd /path/to/mingle
 $ ./build/mingle vis.mac
 ```
 
-to generate various visualization output files. A detailed description on each visualization method is available [here](http://physino.xyz/gears/examples/detector/visualization). 
+to generate various visualization output files. A detailed description on each visualization method is available [here](http://physino.xyz/gears/examples/detector/visualization).
+
+Note that many visualization methods do not work if there is no volume placed in the world (the volume that is not placed). It seems that the Qt based OpenGL needs to be used after other visualization methods, otherwise the program will crash. The good news is that the Qt based OpenGL will copy setups from other methods and no additional setup for it is needed. This is demonstrated in [gui.mac](gui.mac).
+
+### Scorer
+[![visualization](https://img.shields.io/badge/previous-tag-blueviolet?style=flat)](#visualization)
+
+The [scorer](https://github.com/jintonic/mingle/releases/tag/scorer) tag marks a version of `MinGLE` that uses [G4ScoringManager][] to record some important statistical parameters from a [Geant4][] simulation. Run the following commands
+
+```sh
+$ cd /path/to/mingle
+$ ./build/mingle run.mac
+```
+
+to generate two CSV files, which record numbers of steps of 6.5 MeV alpha-rays and secondary electrons in different distances from the emission point.
 
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
@@ -294,3 +310,4 @@ to generate various visualization output files. A detailed description on each v
 [GPS]: http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
 [primary particles]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/eventDef.html
 [vis]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/visualization.html
+[G4ScoringManager]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html
