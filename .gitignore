@@ -15,3 +15,6 @@
 *.heprep
 *.wrl
 
+# ignore data output
+*.root
+*.csv
