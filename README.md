@@ -80,6 +80,7 @@ Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org
 [![generator](https://img.shields.io/badge/+-generator-blue?style=flat)](#generator)
 [![visualization](https://img.shields.io/badge/+-visualization-blueviolet?style=flat)](#visualization)
 [![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
+[![analysis](https://img.shields.io/badge/+-analysis-red?style=flat)](#analysis)
 
 Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
 
@@ -288,6 +289,7 @@ Note that many visualization methods do not work if there is no volume placed in
 
 ### Scorer
 [![visualization](https://img.shields.io/badge/previous-tag-blueviolet?style=flat)](#visualization)
+[![analysis](https://img.shields.io/badge/+-analysis-red?style=flat)](#analysis)
 
 The [scorer](https://github.com/jintonic/mingle/releases/tag/scorer) tag marks a version of `MinGLE` that uses [G4ScoringManager][] to record some important statistical parameters from a [Geant4][] simulation. Run the following commands
 
@@ -297,6 +299,26 @@ $ ./build/mingle run.mac
 ```
 
 to generate two CSV files, which record numbers of steps of 6.5 MeV alpha-rays and secondary electrons in different distances from the emission point.
+
+### Analysis
+[![scorer](https://img.shields.io/badge/previous-tag-8033ff?style=flat)](#scorer)
+
+The [analysis](https://github.com/jintonic/mingle/releases/tag/analysis) tag marks a version of `MinGLE` that uses [G4GenericAnalysisManager][] to save some important statistical parameters from a [Geant4][] simulation into 1D [histograms][] or even [ntuples][]. Run the following commands
+
+```sh
+$ cd /path/to/mingle
+$ ./build/mingle run.mac
+```
+
+to generate `output.root`, which contains a [TTree][] object `d_e` that has a leaf `d_e_score`, which records the energy deposition `e` in a volume called `d` in each event. Run the following commands to draw the energy spectrum recorded in the sensitive volume `d`:
+
+```sh
+$ root output.root
+root[0] .ls
+root[1] d_e->Draw("d_e_score")
+```
+
+A new volume called `d` made of a CsI scintillating crystal is placed in the vacuum chamber in the [detector.tg](detector.tg) file. The volume name, `d`, is used in [mingle.cc](mingle.cc) to identify the volume that should be turned into a sensitive volume. A [primitive scorer][ps], [G4PSEnergyDeposit][], is used to save energy, `e`, deposited in `d` in an ntuple named `d_e`. We can change any volume in [detector.tg](detector.tg) to `d` to enable saving of its energy deposition.
 
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
@@ -311,3 +333,9 @@ to generate two CSV files, which record numbers of steps of 6.5 MeV alpha-rays a
 [primary particles]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/eventDef.html
 [vis]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/visualization.html
 [G4ScoringManager]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html
+[G4GenericAnalysisManager]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Analysis/managers.html
+[histograms]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html?highlight=score#writing-scores-to-a-file
+[ntuples]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Examples/BasicCodes.html?highlight=b4a#example-b4
+[TTree]: https://root.cern.ch/doc/master/classTTree.html
+[ps]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html?highlight=score#list-of-available-primitive-scorers
+[G4PSEnergyDeposit]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/source/digits_hits/scorer/include/G4PSEnergyDeposit.hh
