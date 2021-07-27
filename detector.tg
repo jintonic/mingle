@@ -3,13 +3,20 @@
 :vis hall OFF
 
 // define a cylindrical vacuum chamber made of stainless steel
-:volu chamber TUBE 0 1*m 1*m G4_STAINLESS-STEEL
-:color chamber 0.3 0.7 0.2
+:volu chamber TUBE 0 10*cm 15*cm G4_STAINLESS-STEEL
+:color chamber 0.5 0.5 0.5
 
-:volu vacuum TUBE 0 0.99*m 0.99*m G4_Galactic
-:color vacuum 0.3 0.7 0.2
+// default length unit: mm
+:volu vacuum TUBE 0 99 149 G4_Galactic
+:color vacuum 0.5 0.5 0.5
 
 :rotm r000 0 0 0
-:place chamber 1 hall r000 0 0 0
+:place chamber 3 hall r000 0 0 0
 :place vacuum 2 chamber r000 0 0 0
+
+// define a scintillation detector named "d", 
+// we can turn any volume into a sensitive detector by renaming it to "d"
+:volu d TUBE 0 50 100 G4_CESIUM_IODIDE
+:color d 0.3 0.7 0.9
+:place d 1 vacuum r000 0 0 0
 
