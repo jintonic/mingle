@@ -21,7 +21,7 @@
 /tracking/verbose 2
 # simulate a few events
 /run/beamOn 1
-# disable verbose output for large amount of events
+# disable verbose output for a large quantity of events
 /tracking/verbose 0
 
 # visualize both tracks and geometry
@@ -33,8 +33,7 @@
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate
 /run/beamOn 50
-
-# disable visualization for even larger amount of events
+# disable visualization for a even larger quantity of events
 /vis/disable
 
 /score/create/boxMesh mesh
@@ -58,4 +57,16 @@
 
 /score/dumpQuantityToFile mesh nOfStepEMinus nOfStepEMinus.csv
 /score/dumpQuantityToFile mesh nOfStepAlpha nOfStepAlpha.csv
+
+# switch from alpha to gamma
+/gps/particle gamma
+/gps/energy 2.6 MeV
+/gps/pos/centre -20 0 0 cm
+/gps/direction 1 0 0
+
+# save energy deposition in sensitive volume in output.root
+/analysis/setFileName output
+
+/run/printProgress 1000
+/run/beamOn 10000
 
