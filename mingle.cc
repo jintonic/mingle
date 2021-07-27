@@ -1,5 +1,7 @@
 #include <G4VUserDetectorConstruction.hh>
+#include <G4PSEnergyDeposit.hh>
 #include <G4tgbVolumeMgr.hh>
+#include <G4SDManager.hh>
 
 class Detector : public G4VUserDetectorConstruction
 {
@@ -8,6 +10,44 @@ class Detector : public G4VUserDetectorConstruction
 			G4tgbVolumeMgr::GetInstance()->AddTextFile("detector.tg");
 			return G4tgbVolumeMgr::GetInstance()->ReadAndConstructDetector();
 		} ///< load detector definition from a text file "detector.tg"
+		void ConstructSDandField() {
+			G4MultiFunctionalDetector* d = new G4MultiFunctionalDetector("d");
+			G4SDManager::GetSDMpointer()->AddNewDetector(d);
+			G4VPrimitiveScorer* scorer = new G4PSEnergyDeposit("e");
+			d->RegisterPrimitive(scorer);
+			SetSensitiveDetector("d",d);
+		} ///< make "d" volume in "detector.tg" sensitive
+};
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+#include <G4UserRunAction.hh>
+#include <G4TScoreHistFiller.hh>
+#include <G4TScoreNtupleWriter.hh>
+#include <G4GenericAnalysisManager.hh>
+
+class RunAction : public G4UserRunAction
+{
+	public:
+		G4GenericAnalysisManager *fAnaMgr;
+		G4TScoreHistFiller<G4GenericAnalysisManager> *fFiller;
+		G4TScoreNtupleWriter<G4GenericAnalysisManager> *fWriter;
+
+		RunAction() : G4UserRunAction() {
+			fAnaMgr = G4GenericAnalysisManager::Instance();
+			fAnaMgr->SetNtupleMerging(true); // merge data from multiple threads
+			fFiller = new G4TScoreHistFiller<G4GenericAnalysisManager>;
+			fWriter = new G4TScoreNtupleWriter<G4GenericAnalysisManager>;
+		} ///< initialize analysis manager, histogram filler and ntuple writer
+		~RunAction() { delete fAnaMgr; delete fFiller; delete fWriter; }
+
+		void BeginOfRunAction(const G4Run*) {
+			if (fAnaMgr->GetFileName()=="") return;
+			fAnaMgr->OpenFile(fAnaMgr->GetFileName());
+		} ///< open output file specified by /analysis/setFileName
+		void EndOfRunAction(const G4Run*) {
+			if (fAnaMgr->GetFileName()=="") return;
+			fAnaMgr->Write(); fAnaMgr->CloseFile();
+		} ///< write data to and close output file if it is specified
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -31,7 +71,11 @@ class Generator : public G4VUserPrimaryGeneratorAction
 class Action : public G4VUserActionInitialization
 {
 	public:
-		void Build() const { SetUserAction(new Generator); }
+		void BuildForMaster() const { SetUserAction(new RunAction); }
+		void Build() const {
+			SetUserAction(new RunAction);
+			SetUserAction(new Generator);
+		}
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
