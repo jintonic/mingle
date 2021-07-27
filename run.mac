@@ -21,6 +21,8 @@
 /tracking/verbose 2
 # simulate a few events
 /run/beamOn 1
+# disable verbose output for large amount of events
+/tracking/verbose 0
 
 # visualize both tracks and geometry
 /vis/open HepRepFile
@@ -32,9 +34,8 @@
 /vis/scene/endOfEventAction accumulate
 /run/beamOn 50
 
-# disable verbose output for serious simulation
+# disable visualization for even larger amount of events
 /vis/disable
-/tracking/verbose 0
 
 /score/create/boxMesh mesh
 /score/mesh/boxSize 4 1 1 cm
