@@ -38,7 +38,7 @@ class RunAction : public G4UserRunAction
 			fFiller = new G4TScoreHistFiller<G4GenericAnalysisManager>;
 			fWriter = new G4TScoreNtupleWriter<G4GenericAnalysisManager>;
 		} ///< initialize analysis manager, histogram filler and ntuple writer
-		~RunAction() { delete fAnaMgr; delete fFiller; delete fWriter; }
+		~RunAction() { delete fFiller; delete fWriter; }
 
 		void BeginOfRunAction(const G4Run*) {
 			if (fAnaMgr->GetFileName()=="") return;
