@@ -29,8 +29,8 @@ $ cd mingle
 $ mkdir build
 # get into the build directory
 $ cd build
-# run cmake text-based user interface (TUI)
-$ ccmake ..
+# run cmake with default settings, or ccmake for text-based user interface (TUI)
+$ cmake ..
 # compile mingle.cc
 $ make
 # run the generated executable (mingle) interactively in the current directory (./)
