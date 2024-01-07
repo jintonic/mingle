@@ -64,8 +64,9 @@
 /gps/pos/centre -20 0 0 cm
 /gps/direction 1 0 0
 
-# save energy deposition in sensitive volume in output.root
-/analysis/setFileName output
+/score/create/realWorldLogVol CsI
+/score/quantity/energyDeposit e
+/score/close
 
 /run/printProgress 1000
 /run/beamOn 10000

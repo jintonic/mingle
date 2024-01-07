@@ -14,9 +14,7 @@
 :place chamber 3 hall r000 0 0 0
 :place vacuum 2 chamber r000 0 0 0
 
-// define a scintillation detector named "d", 
-// we can turn any volume into a sensitive detector by renaming it to "d"
-:volu d TUBE 0 50 100 G4_CESIUM_IODIDE
-:color d 0.3 0.7 0.9
-:place d 1 vacuum r000 0 0 0
+:volu CsI TUBE 0 50 100 G4_CESIUM_IODIDE
+:color CsI 0.3 0.7 0.9
+:place CsI 1 vacuum r000 0 0 0
 
