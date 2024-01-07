@@ -1,3 +1,6 @@
+# ignore executable
+mingle
+
 # ignore build directory
 *build*
 .vs
@@ -18,3 +21,11 @@
 # ignore data output
 *.root
 *.csv
+
+# ignore cmake generated files
+.qt
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+
