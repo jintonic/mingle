@@ -11,7 +11,7 @@
 ## Prerequisites
 - [Geant4][] 10.7 or above is needed to use
   - [G4RunManagerFactory][]
-- [CMake](https://cmake.org/download/) 2.9 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
+- [CMake](https://cmake.org/download/) 3.5 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
 - A not-so-old C++ compiler, e.g.
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
   - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
@@ -113,7 +113,7 @@ C++                              1              1              0              6
 $ git checkout -
 ```
 
-This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a veriety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
+This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a variety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
 
 ### Batch
 [![minimum](https://img.shields.io/badge/previous-tag-red?style=flat)](#minimum)
