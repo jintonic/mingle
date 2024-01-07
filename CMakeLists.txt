@@ -13,3 +13,6 @@ if(WIN32)
   # https://stackoverflow.com/a/37994396/1801749
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT mingle)
 endif()
+
+install(TARGETS mingle DESTINATION bin)
+
