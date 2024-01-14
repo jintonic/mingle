@@ -1,0 +1,36 @@
+# display applied commands on screen
+/control/verbose 2
+
+# construct detector geometry and physics processes
+/run/initialize
+
+# shoot 6.5 MeV alpha to positive x direction
+/gps/particle alpha
+/gps/energy 6.5 MeV
+/gps/pos/centre -4 0 0 m
+/gps/direction 1 0 0
+
+# print every step of simulation on screen
+/tracking/verbose 2
+# simulate a few events
+/run/beamOn 1
+# disable verbose output for a large quantity of events
+/tracking/verbose 0
+
+/score/create/boxMesh mesh
+/score/mesh/boxSize 4 1 1 cm
+/score/mesh/nBin 40 1 1
+/score/mesh/translate/xyz -3.97 0. 0. m
+
+/score/quantity/nOfStep nOfStepEMinus
+/score/filter/particle eMinusFilter e-
+/score/quantity/nOfStep nOfStepAlpha
+/score/filter/particle AlphaFilter alpha
+/score/close
+/score/list
+
+/run/printProgress 100
+/run/beamOn 1000
+
+/score/dumpQuantityToFile mesh nOfStepEMinus nOfStepEMinus.csv
+/score/dumpQuantityToFile mesh nOfStepAlpha nOfStepAlpha.csv
