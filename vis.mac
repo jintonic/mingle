@@ -4,6 +4,8 @@
 # add more menu items in GUI 
 /control/ifInteractive gui.mac
 
+# no need of many threads for visualization
+/run/numberOfThreads 2
 # construct detector geometry and physics processes
 /run/initialize
 
