@@ -244,7 +244,7 @@ Abort trap: 6
 
 The [generator](https://github.com/jintonic/mingle/releases/tag/generator) tag marks a version of `MinGLE` that uses the [Geant4][] general particle source ([GPS][]) to generate [primary particles][], from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
 
-<img src="https://github.com/jintonic/gears/blob/master/examples/output/tracks.png" style="width:100%" alt="tracks.png">
+<img src="https://github.com/jintonic/gears/blob/master/tutorials/output/tracks.png" style="width:100%" alt="tracks.png">
 
 The up-to-date examples of [GPS][] are shipped together with the [Geant4][] source code in the folder:
 
