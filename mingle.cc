@@ -53,7 +53,8 @@ int main(int argc,char** argv)
 
 	// https://geant4-forum.web.cern.ch/t/11480/3
 	G4TScoreNtupleWriter<G4AnalysisManager> writer; // enable data recording
-	writer.SetNtupleMerging(true); // merge ntuples created in different threads
+	if (run->GetRunManagerType()!=G4RunManager::sequentialRM)
+		writer.SetNtupleMerging(true);// merge ntuples created in multi threads
 
 	// load default physics list, or the one specified by $PHYSLIST
 	G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
