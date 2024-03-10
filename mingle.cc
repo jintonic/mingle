@@ -62,7 +62,7 @@ int main(int argc,char** argv)
 
 	run->SetUserInitialization(new Action);
 
-	G4VisManager *vis = new G4VisExecutive("quiet"); vis->Initialize();
+	G4VisManager *vis = new G4VisExecutive(); vis->Initialize();
 
 	if (argc==1) { // interactive mode
 		G4UIExecutive ui(argc, argv);
