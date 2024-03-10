@@ -47,30 +47,34 @@ class Action : public G4VUserActionInitialization
 
 int main(int argc,char** argv)
 {
-	auto *run = G4RunManagerFactory::CreateRunManager();
+	auto run = G4RunManagerFactory::CreateRunManager();
 
 	G4ScoringManager::GetScoringManager(); // enable macro commands in /score/
 
 	// https://geant4-forum.web.cern.ch/t/11480/3
-	G4TScoreNtupleWriter<G4AnalysisManager> writer;
+	G4TScoreNtupleWriter<G4AnalysisManager> writer; // enable data recording
 	writer.SetNtupleMerging(true); // merge ntuples created in different threads
 
-	G4PhysListFactory factory;
-	run->SetUserInitialization(factory.ReferencePhysList());
+	// load default physics list, or the one specified by $PHYSLIST
+	G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
 
-	run->SetUserInitialization(new Detector);
+	run->SetUserInitialization(new Detector); // specify detector setup
 
-	run->SetUserInitialization(new Action);
+	run->SetUserInitialization(new Action); // specify user action
 
-	G4VisManager *vis = new G4VisExecutive(); vis->Initialize();
+	G4UIExecutive* ui = nullptr; // assume batch mode
+	if (argc==1) ui = new G4UIExecutive(argc, argv); // interactive mode
 
-	if (argc==1) { // interactive mode
-		G4UIExecutive ui(argc, argv);
-		ui.SessionStart();
+	auto vis = new G4VisExecutive(); vis->Initialize(); // enable visialization
+
+	if (ui) { // interactive mode
+		ui->SessionStart(); // do this after vis
+		delete ui;
 	} else { // batch mode
-		G4String command = "/control/execute ";
-		G4UImanager::GetUIpointer()->ApplyCommand(command+argv[1]);
+		G4String cmd = "/control/execute ";
+		G4UImanager::GetUIpointer()->ApplyCommand(cmd+argv[1]); // run a macro file
 	}
 
-	delete vis; delete run;
+	delete vis; delete run; // clear up memory
+	return 0;
 }
