@@ -1,51 +1,36 @@
-# According to https://geant4.org/download
-# Geant4 (>=11.2) is pre-compiled on 64-bit AlmaLinux
-FROM almalinux
+# Geant4 (>=11.2) is pre-compiled on 64-bit AlmaLinux (https://geant4.org/download)
+# So we target linux/amd64 platform (https://stackoverflow.com/a/60252669/1801749)
+from --platform=linux/amd64 almalinux
 
-# `which` is needed by `make`, `ncurses` provides tput
-# `cmake` requires `make` and `ncurses`
-# `mesa-libGL` & `libXmu` are needed to compile geant4 applications
-# `file`, `xdg-utils`, `vim` is used by https://github.com/dylanaraps/fff
-RUN dnf install -y gcc-c++ which mesa-libGL libXmu file xdg-utils cmake \
- && curl -LO https://github.com/dylanaraps/fff/raw/master/fff && chmod 755 fff && mv fff bin \
- && echo 'l(){ fff "$@"; cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"; }' >> /root/.bashrc \
- && echo 'export EDITOR="micro"; alias ls="ls --color"; alias la="ls -a"' >> /root/.bashrc \ 
- && echo 'export FFF_FAV1=~/gears/INSTALL'>> /root/.bashrc \
- && echo 'export FFF_FAV2=~/gears/tutorials'>> /root/.bashrc \
- && echo 'export FFF_FAV4=~/gears/tutorials/physics'>> /root/.bashrc \
- && echo 'export FFF_FAV5=~/gears/tutorials/detector/visualization'>> /root/.bashrc \
- && echo 'export FFF_FAV6=~/gears/tutorials/sources'>> /root/.bashrc \
- && echo 'export FFF_FAV9=~/gears'>> /root/.bashrc \
- && cd /usr/bin && curl https://getmic.ro/r | bash \
+# install pre-compiled geant4 to /usr
+run cd /usr \
+ && curl -LO https://cern.ch/geant4-data/releases/lib4.11.2.p01/Linux-g++11.4.1-Alma9.tar.gz \
+ && tar xf *.gz && rm -f *.gz
+
+# install development tools
+# `cmake` requires `make`, `which` is needed when run `make`
+# `mesa-libGL`, `libXmu`, `expat` are needed to compile geant4 applications
+# their -devel packages are needed to provide unversioned .so files
+run dnf install -y gcc-c++ cmake which mesa-libGL-devel libXmu-devel expat-devel \
  && dnf clean all && rm -fr /var/cache/*
 
-# get pre-compiled geant4
-RUN  curl -LO https://cern.ch/geant4-data/releases/lib4.11.2/Linux-g++11.3.1-Alma9.tar.gz \
-  && tar xf Linux*.tar.gz && rm -r Linux*.tar.gz && mv Geant4*/lib64/cmake/Geant4 usr/lib64/cmake/ \
-  && mv Geant4-*-Linux/bin/* usr/bin && mv Geant4-*-Linux/lib64/*.so* usr/lib64 \
-  && mv Geant4-*-Linux/include/* usr/include && mv Geant4-*-Linux/share/* usr/share \
-  && sed -i "s|build/jenkins/workspace/web/11.2.0/install/Geant4-11.2.0-Linux/share|root/gears/INSTALL|g" usr/bin/geant4-config \
-  && rm -fr /Geant4-*-Linux && mkdir -p /usr/share/Geant4/data cd /usr/share/\
-  && curl -LO https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.2.3.tar.gz \
-  && tar xf G4ENSDFSTATE*.tar.gz && rm -r G4ENSDFSTATE*.tar.gz 
-# compile GEARS
-RUN cd usr/bin \
-  && curl -LO https://github.com/jintonic/gears/raw/master/gears.cc \
-  && curl -LO https://github.com/jintonic/gears/raw/master/Makefile \
-  && make && rm -f gears.cc Makefile
+# compile and install MinGLE
+run curl -LO https://github.com/jintonic/mingle/raw/main/mingle.cc \
+ && curl -LO https://github.com/jintonic/mingle/raw/main/CMakeLists.txt \
+ && cmake . && make install && rm -fr afs mingle* *ake* *.txt
 
-WORKDIR /root/mingle
+# set up environment
+run sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4-config \
+ && sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4.sh \
+ && echo 'alias ls="ls --color"' >> /root/.bashrc \ 
+ && echo 'alias la="ls -A"' >> /root/.bashrc \
+ && echo 'alias ll="ls -lh"' >> /root/.bashrc
 
-# use datasets saved in the mapped host folder
-ENV GEANT4_DATA_DIR=/root/gears/INSTALL/Geant4/data
-# if datasets are missing in the host folder, run
-#     geant4-config --install-datasets
-# in the container to install them
+env GEANT4_DATA_DIR=/usr/share/Geant4/data
+env G4RUN_MANAGER_TYPE=Serial
 
-# enable colorful shell prompt
-# https://superuser.com/a/367280
-ENV PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "
-ENV TERM="xterm-256color"
+# enable colorful shell prompt (https://superuser.com/a/367280)
+env PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "
+env TERM="xterm-256color"
 
-# prefer user compiled gears over gears compiled here
-ENV PATH=/root/gears:$PATH
+workdir /root
