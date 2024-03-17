@@ -30,5 +30,8 @@ Makefile
 cmake_install.cmake
 
 # ignore geant4 installation
-geant4/11*
+geant4/*/bin
+geant4/*/lib
+geant4/*/include
+geant4/*/share
 geant4/data

@@ -11,8 +11,9 @@ run cd /usr \
 # `cmake` requires `make`, `which` is needed when run `make`
 # `mesa-libGL`, `libXmu`, `expat` are needed to compile geant4 applications
 # their -devel packages are needed to provide unversioned .so files
-run dnf install -y gcc-c++ cmake which mesa-libGL-devel libXmu-devel expat-devel \
- && dnf clean all && rm -fr /var/cache/*
+# `mesa-dri-drivers` is needed to run OpenGL related stuff
+run dnf install -y gcc-c++ cmake which mesa-libGL-devel libXmu-devel \
+ expat-devel mesa-dri-drivers && dnf clean all && rm -fr /var/cache/*
 
 # compile and install MinGLE
 run curl -LO https://github.com/jintonic/mingle/raw/main/mingle.cc \
@@ -24,7 +25,8 @@ run sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4-config \
  && sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4.sh \
  && echo 'alias ls="ls --color"' >> /root/.bashrc \ 
  && echo 'alias la="ls -A"' >> /root/.bashrc \
- && echo 'alias ll="ls -lh"' >> /root/.bashrc
+ && echo 'alias ll="ls -lh"' >> /root/.bashrc \
+ && echo 'alias l="ls -Alh"' >> /root/.bashrc
 
 env GEANT4_DATA_DIR=/usr/share/Geant4/data
 env G4RUN_MANAGER_TYPE=Serial
@@ -33,4 +35,5 @@ env G4RUN_MANAGER_TYPE=Serial
 env PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "
 env TERM="xterm-256color"
 
+# overwrite the default workdir /
 workdir /root
