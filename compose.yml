@@ -1,21 +1,30 @@
 services:
   min:
     image: physino/geant4:minimal
+    profiles: [ "min" ]
     command: /usr/bin/bash
     working_dir: /root/mingle
     volumes:
       - .:/root/mingle
       - ./geant4/data:/usr/share/Geant4/data
-    build: geant4/minimal
+    build: geant4/11.2.1
   mingle:
     image: physino/mingle
+    profiles: [ "mingle" ]
     command: /usr/bin/bash
     working_dir: /root/mingle
     volumes:
       - .:/root/mingle
-    build: .
+      - ./geant4/data:/usr/share/Geant4/data
+  sshd:
+    image: physino/geant4:sshd
+    working_dir: /root/mingle
+    ports: [ 2222:22 ]
+    volumes: [ .:/root/mingle ]
+    build: geant4
   g4:
     image: physino/geant4
+    profiles: [ "g4" ]
     command: /usr/bin/bash
     working_dir: /root/mingle
     volumes:
