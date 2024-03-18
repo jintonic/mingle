@@ -1,4 +1,4 @@
-from --platform=linux/amd64 physino/geant4:minimal
+from physino/geant4:cli
 
 # install minimal datasets (https://geant4-forum.web.cern.ch/t/11527/2)
 run mkdir -p /usr/share/Geant4/data && cd /usr/share/Geant4/data \
@@ -8,21 +8,22 @@ run mkdir -p /usr/share/Geant4/data && cd /usr/share/Geant4/data \
  && curl -LO https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.0.tar.gz \
  && tar xf *EN* && tar xf *EM* && tar xf *Ph* && tar xf *PA* && rm -f *.gz 
 
-# install command-line tools
-# `file`, `xdg-utils` are used by https://github.com/dylanaraps/fff
-run dnf install -y file xdg-utils tmux vim git \
- && cd /usr/local/bin && curl https://getmic.ro/r | bash \
- && curl -LO https://github.com/dylanaraps/fff/raw/master/fff && chmod 755 fff \
- && dnf clean all && rm -fr /var/cache/*
+# install openssh server
+run dnf install -y openssh-server && dnf clean all && rm -fr /var/cache/*
 
-# set up environment
-run mkdir -p /root/.config/micro \
- && echo 'export EDITOR=micro' >> /root/.bashrc \ 
- && echo -e '{\n "colorscheme": "solarized"\n}' >> /root/.config/micro/settings.json \ 
- && echo -e 'l() {\n  fff "$@"' >> /root/.bashrc \
- && echo '  cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"' >> /root/.bashrc \
- && echo '}' >> /root/.bashrc \
- && echo 'export FFF_FAV3=~/mingle'>> /root/.bashrc
+# configure ssh server
+# https://www.garron.me/en/linux/sshd-no-hostkeys-available-exiting.html
+run cd /etc/ssh && ssh-keygen -A && echo 'root:geant4' | chpasswd \
+ && sed -i -e 's/^#X11Forwarding no$/X11Forwarding yes/' sshd_config
 
-# prefer user compiled mingle over the one compiled in physino/geant4:minimal
-env PATH=/root/mingle/build:$PATH
+# ENV settings in a Dockerfile work for the terminal in Docker Desktop,
+# but they don't work for a shell created by ssh.
+# We need to save those settings directly in ~/.bashrc
+run cd /root && echo 'export G4RUN_MANAGER_TYPE=Serial' >> .bashrc \
+ && echo 'export TERM="xterm-256color"' >> .bashrc \
+ && echo 'export PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "' >> .bashrc
+
+# https://stackoverflow.com/a/40801773/1801749
+expose 22
+
+cmd ["/usr/sbin/sshd", "-D"]
