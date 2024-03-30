@@ -1,12 +1,16 @@
 services:
   min:
     image: physino/geant4:minimal
-    profiles: [ "min" ]
+    profiles: [ "min" ] # avoid running it by `compose up`
     command: /usr/bin/bash
     working_dir: /root/mingle
     volumes:
       - .:/root/mingle
       - ./geant4/data:/usr/share/Geant4/data
+    # https://unix.stackexchange.com/a/698068/26929
+    # https://stackoverflow.com/a/63291253/1801749
+    environment: [ TZ=US/Central ]
+    hostname: Geant4 # https://stackoverflow.com/a/63291253/1801749
     build: geant4/11.2.1
   mingle:
     image: physino/mingle
