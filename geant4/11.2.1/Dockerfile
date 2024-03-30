@@ -32,6 +32,7 @@ run cd /usr && sed -i "s|share|/usr/share|" README \
 # no need to enable multi-threading in a container
 env G4RUN_MANAGER_TYPE=Serial
 env GEANT4_DATA_DIR=/usr/share/Geant4/data
+env G4VIS_DEFAULT_DRIVER=TSG_FILE
 
 # enable colorful shell prompt (https://superuser.com/a/367280)
 env PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "
