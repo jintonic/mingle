@@ -20,12 +20,14 @@ run curl -LO https://github.com/jintonic/mingle/raw/main/mingle.cc \
  && cmake . && make install && rm -fr afs mingle* *ake* *.txt
 
 # set up environment
-run sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4-config \
- && sed -i -E "s|build/.{,60}-Linux|usr|g" /usr/bin/geant4.sh \
- && echo 'alias ls="ls --color"' >> /root/.bashrc \ 
- && echo 'alias la="ls -A"' >> /root/.bashrc \
- && echo 'alias ll="ls -lh"' >> /root/.bashrc \
- && echo 'alias l="ls -Alh"' >> /root/.bashrc
+run cd /usr && sed -i "s|share|/usr/share|" README \
+ && sed -i -E "s|the.{,14}Manual|https://hub.docker.com/r/physino/geant4|" README \
+ && sed -i -E "s|build/.{,60}-Linux|usr|g" bin/geant4-config \
+ && sed -i -E "s|build/.{,60}-Linux|usr|g" bin/geant4.sh && cd /root \
+ && echo 'alias ls="ls --color"' >> .bashrc \ 
+ && echo 'alias la="ls -A"' >> .bashrc \
+ && echo 'alias ll="ls -lh"' >> .bashrc \
+ && echo 'alias l="ls -Alh"' >> .bashrc
 
 # no need to enable multi-threading in a container
 env G4RUN_MANAGER_TYPE=Serial
@@ -37,3 +39,6 @@ env TERM="xterm-256color"
 
 # overwrite the default workdir /
 workdir /root
+
+# https://kodekloud.com/blog/keep-docker-container-running
+cmd head -9 /usr/README && tail -8f /usr/README
