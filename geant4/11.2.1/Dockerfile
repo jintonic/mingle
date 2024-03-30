@@ -2,7 +2,7 @@
 # So we target linux/amd64 platform (https://stackoverflow.com/a/60252669/1801749)
 from --platform=linux/amd64 almalinux
 
-# install pre-compiled geant4 to /usr
+# install pre-compiled geant4 to /usr to avoid setting LD_LIBRARY_DATA
 run cd /usr \
  && curl -LO https://cern.ch/geant4-data/releases/lib4.11.2.p01/Linux-g++11.4.1-Alma9.tar.gz \
  && tar xf *.gz && rm -f *.gz
