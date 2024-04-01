@@ -28,7 +28,9 @@ run cd /usr && sed -i -e '5,27d' -e '$d' -e 's|share|/usr/share|' README \
  && echo 'alias ls="ls --color"' >> .bashrc \ 
  && echo 'alias la="ls -A"' >> .bashrc \
  && echo 'alias ll="ls -lh"' >> .bashrc \
- && echo 'alias l="ls -Alh"' >> .bashrc
+ && echo 'alias l="ls -Alh"' >> .bashrc \
+ && echo 'echo You are running /bin/sh' >> .profile \
+ && echo 'echo Type \"bash↵\" to switch to bash' >> .profile
 
 # no need to enable multi-threading in a container
 env G4RUN_MANAGER_TYPE=Serial
@@ -38,6 +40,10 @@ env G4VIS_DEFAULT_DRIVER=TSG_FILE
 # enable colorful shell prompt (https://superuser.com/a/367280)
 env PS1="\[\e[0;32m\]\u@Geant4:\[\e[0;34m\]\w \[\e[0;31m\]\$\[\e[m\] "
 env TERM="xterm-256color"
+# leave a message for Docker Desktop Exec tab
+# https://stackoverflow.com/a/39622593/1801749
+# https://www.baeldung.com/linux/bashrc-vs-bash-profile-vs-profile
+env ENV=~/.profile
 
 # overwrite the default workdir /
 workdir /root
