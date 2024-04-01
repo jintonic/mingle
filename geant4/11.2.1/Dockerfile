@@ -20,10 +20,11 @@ run curl -LO https://github.com/jintonic/mingle/raw/main/mingle.cc \
  && cmake . && make install && rm -fr afs mingle* *ake* *.txt
 
 # set up environment
-run cd /usr && sed -i "s|share|/usr/share|" README \
- && sed -i -E "s|the.{,14}Manual|https://hub.docker.com/r/physino/geant4|" README \
- && sed -i -E "s|build/.{,60}-Linux|usr|g" bin/geant4-config \
- && sed -i -E "s|build/.{,60}-Linux|usr|g" bin/geant4.sh && cd /root \
+run cd /usr && sed -i -e '5,27d' -e '$d' -e 's|share|/usr/share|' README \
+ && sed -i -E 's|the.{,14}Manual|https://hub.docker.com/r/physino/geant4|' README \
+ && sed -i -E 's|build/.{,60}-Linux|usr|g' bin/geant4-config \
+ && sed -i -E 's|build/.{,60}-Linux|usr|g' bin/geant4.sh \
+ && cd /root && rm -f .*cshrc \
  && echo 'alias ls="ls --color"' >> .bashrc \ 
  && echo 'alias la="ls -A"' >> .bashrc \
  && echo 'alias ll="ls -lh"' >> .bashrc \
@@ -42,4 +43,4 @@ env TERM="xterm-256color"
 workdir /root
 
 # https://kodekloud.com/blog/keep-docker-container-running
-cmd head -9 /usr/README && tail -8f /usr/README
+cmd tail -12f /usr/README
