@@ -30,7 +30,7 @@ run cd /usr && sed -i -e '5,27d' -e '$d' -e 's|share|/usr/share|' README \
  && echo 'alias ll="ls -lh"' >> .bashrc \
  && echo 'alias l="ls -Alh"' >> .bashrc \
  && echo 'echo You are running /bin/sh' >> .profile \
- && echo 'echo Type \"bash↵\" to switch to bash' >> .profile
+ && echo 'echo Type \"bash↵\" for a better UI' >> .profile
 
 # no need to enable multi-threading in a container
 env G4RUN_MANAGER_TYPE=Serial
