@@ -1,7 +1,7 @@
 services:
-  minimal:
+  g4:
     image: physino/geant4:11.2.1
-    profiles: [ "minimal" ] # avoid running it by `compose up`
+    profiles: [ "g4" ] # avoid running it by `compose up`
     command: /usr/bin/bash
     working_dir: /geant4/mingle
     volumes:
@@ -10,7 +10,7 @@ services:
     # https://unix.stackexchange.com/a/698068/26929
     # https://stackoverflow.com/a/63291253/1801749
     environment: [ TZ=US/Central ]
-    hostname: Geant4 # https://stackoverflow.com/a/63291253/1801749
+    hostname: AlmaLinux # https://stackoverflow.com/a/63291253/1801749
     build: geant4/11.2.1
   mingle:
     image: physino/gears
@@ -26,12 +26,4 @@ services:
     working_dir: /root/mingle
     ports: [ 2222:22 ]
     volumes: [ .:/root/mingle ]
-    build: geant4
-  g4:
-    image: physino/geant4
-    profiles: [ "g4" ]
-    command: /usr/bin/bash
-    working_dir: /root/mingle
-    volumes:
-      - .:/root/mingle
     build: geant4
