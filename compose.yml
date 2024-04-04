@@ -1,6 +1,6 @@
 services:
   g4:
-    image: physino/geant4:11.2.1
+    image: physino/geant4:minimal
     profiles: [ "g4" ] # avoid running it by `compose up`
     command: /usr/bin/bash
     working_dir: /geant4/mingle
