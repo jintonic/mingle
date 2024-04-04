@@ -13,10 +13,11 @@ services:
     hostname: Geant4 # https://stackoverflow.com/a/63291253/1801749
     build: geant4/11.2.1
   mingle:
-    image: physino/mingle
+    image: physino/gears
     profiles: [ "mingle" ]
-    command: /usr/bin/bash
+    command: /usr/bin/tmux new lf
     working_dir: /root/mingle
+    environment: [ TZ=US/Central ]
     volumes:
       - .:/root/mingle
       - ./geant4/data:/usr/share/Geant4/data
