@@ -24,25 +24,24 @@ If you know how to use [Git][], please follow the instruction below. If you don'
 
 ```sh
 # download mingle git repository from github to a local hard disk
-$ git clone https://github.com/jintonic/mingle.git
+git clone https://github.com/jintonic/mingle.git
 # get into the mingle directory
-$ cd mingle
+cd mingle
 # create a subdirectory called 'build'
-$ mkdir build
+mkdir build
 # get into the build directory
-$ cd build
+cd build
 # run cmake with default settings, or ccmake for text-based user interface (TUI)
-$ cmake ..
+cmake ..
 # compile mingle.cc
-$ make
+make
 # run the generated executable (mingle) interactively in the current directory (./)
-$ ./mingle
+./mingle
 # go to the parent directory
-$ cd ..
+cd ..
 # run mingle in TUI even if there is GUI
-$ G4UI_USE_TCSH=1 ./build/mingle
-```
-```sh
+G4UI_USE_TCSH=1 ./build/mingle
+
 Available UI session types: [ Qt, GAG, tcsh, csh ]
 PreInit> ls
 Command directory path : /
@@ -68,10 +67,9 @@ Guidance :
 full list of available units.
 
 PreInit> exit
-$
 ```
 
-Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt), not part of the commands. Lines start with '#' are comments, they cannot be run.
+Note that lines start with '#' are comments, they cannot be run.
 
 ## Tags
 [![minimum](https://img.shields.io/badge/-minimum-red?style=flat)](#minimum)
@@ -84,7 +82,11 @@ Note that the '\$' sign represents the [command prompt](https://en.wikipedia.org
 [![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
 [![ntuple](https://img.shields.io/badge/+-ntuple-red?style=flat)](#ntuple)
 
-Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them out one by one to see how a [Geant4][] application is developed step by step from scratch.
+Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them one by one to see how a [Geant4][] application is developed step by step from scratch using the `git show` command:
+
+```sh
+git show <tag>
+```
 
 ### Minimum
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
@@ -95,25 +97,52 @@ Believe it or not, less than ten lines of C++ are enough to create a [Geant4][] 
 $ git clone https://github.com/jintonic/mingle.git
 $ cd mingle
 # checkout the minimum stage of the project for inspection
-$ git checkout tags/minimum
-# use cloc (count lines of code) to count lines of C++ code in mingle.cc
-$ cloc mingle.cc
-       1 text files.
-       1 unique files.
-       0 files ignored.
+$ git show minimum:mingle.cc
+#include "G4UIExecutive.hh"
 
-github.com/AlDanial/cloc v 1.90  T=0.01 s (264.7 files/s, 1499.9 lines/s)
--------------------------------------------------------------------------------
-Language                     files          blank        comment           code
--------------------------------------------------------------------------------
-C++                              1              1              0              6
--------------------------------------------------------------------------------
-
-# switch back to the latest mingle
-$ git checkout -
+int main(int argc,char** argv)
+{
+        G4UIExecutive ui(argc, argv);
+        ui.SessionStart();
+}
 ```
 
 This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a variety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
+
+We can save this version of `MinGLE` to current working folder, compile it and try it out:
+
+```sh
+# direct (>) the minimum mingle.cc to mingle.cc in current working folder
+git show minimum:mingle.cc > mingle.cc
+# create folder minimum to compile mingle.cc
+cmake -B minimum
+# compile mingle.cc in minimum/ folder
+cmake --build minimum
+# run minimum/mingle
+./minimum/mingle
+Available UI session types: [ tcsh, csh ]
+PreInit> ls
+Command directory path : /
+ Sub-directories :
+   /control/   UI control commands.
+   /units/   Available units.
+   /profiler/   Profiler controls.
+ Commands :
+PreInit> cd /control/
+PreInit> ls
+Command directory path : /control/
+Guidance :
+UI control commands.
+ Sub-directories : 
+   /control/cout/   Control cout/cerr for local thread.
+ Commands : 
+   macroPath * Set macro search path with colon-separated list.
+   execute * Execute a macro file.
+   ...
+PreInit> help execute
+```
+
+Use `git checkout -- mingle.cc` to get back to the latest [mingle.cc](mingle.cc).
 
 ### Batch
 [![minimum](https://img.shields.io/badge/previous-tag-red?style=flat)](#minimum)
