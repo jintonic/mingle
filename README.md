@@ -6,7 +6,7 @@
 
 <img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="35%" align="right">
 
-`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (60 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
 ## Prerequisites
 - [Geant4][] 10.7 or above is needed to use
@@ -24,7 +24,7 @@ If you know how to use [Git][], please follow the instruction below. If you don'
 
 ```sh
 # download mingle git repository from github to a local hard disk
-git clone https://github.com/jintonic/mingle.git
+git clone https://github.com/jintonic/mingle
 # get into the mingle directory
 cd mingle
 # create a subdirectory called 'build'
@@ -72,6 +72,14 @@ PreInit> exit
 Note that lines start with '#' are comments, they cannot be run.
 
 ## Tags
+
+Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them one by one to see how a [Geant4][] application is developed step by step from scratch using the `git show` command:
+
+```sh
+git show <tag>
+```
+
+The following tags are available:
 [![minimum](https://img.shields.io/badge/-minimum-red?style=flat)](#minimum)
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
 [![run](https://img.shields.io/badge/+-run-yellow?style=flat)](#run)
@@ -82,22 +90,18 @@ Note that lines start with '#' are comments, they cannot be run.
 [![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
 [![ntuple](https://img.shields.io/badge/+-ntuple-red?style=flat)](#ntuple)
 
-Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them one by one to see how a [Geant4][] application is developed step by step from scratch using the `git show` command:
-
-```sh
-git show <tag>
-```
-
 ### Minimum
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
 
-Believe it or not, less than ten lines of C++ are enough to create a [Geant4][] application that can be launched. A tag [minimum](https://github.com/jintonic/mingle/releases/tag/minimum) is created for you to quickly switch to it:
+Believe it or not, six lines of C++ are enough to create a [Geant4][] application that can be launched. A tag [minimum](https://github.com/jintonic/mingle/releases/tag/minimum) is created for you to quickly switch to it:
 
 ```sh
-$ git clone https://github.com/jintonic/mingle.git
-$ cd mingle
-# checkout the minimum stage of the project for inspection
-$ git show minimum:mingle.cc
+git clone https://github.com/jintonic/mingle
+cd mingle
+# git show <tag>:<file>
+git show minimum:mingle.cc
+```
+```cpp
 #include "G4UIExecutive.hh"
 
 int main(int argc,char** argv)
@@ -107,12 +111,12 @@ int main(int argc,char** argv)
 }
 ```
 
-This tagged version of `MinGLE` includes only one Geant4 component, [G4UIExecutive][], which [provides a variety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
+This version of `MinGLE` includes only one [Geant4][] component, [G4UIExecutive][], which [provides a variety of user interfaces (UI) for us to pick](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications).
 
-We can save this version of `MinGLE` to current working folder, compile it and try it out:
+We can save this version of `MinGLE` to current working folder, compile and run it:
 
 ```sh
-# direct (>) the minimum mingle.cc to mingle.cc in current working folder
+# save (>) mingle.cc in its minimum stage to mingle.cc in current working folder
 git show minimum:mingle.cc > mingle.cc
 # create folder minimum to compile mingle.cc
 cmake -B minimum
@@ -121,25 +125,7 @@ cmake --build minimum
 # run minimum/mingle
 ./minimum/mingle
 Available UI session types: [ tcsh, csh ]
-PreInit> ls
-Command directory path : /
- Sub-directories :
-   /control/   UI control commands.
-   /units/   Available units.
-   /profiler/   Profiler controls.
- Commands :
-PreInit> cd /control/
-PreInit> ls
-Command directory path : /control/
-Guidance :
-UI control commands.
- Sub-directories : 
-   /control/cout/   Control cout/cerr for local thread.
- Commands : 
-   macroPath * Set macro search path with colon-separated list.
-   execute * Execute a macro file.
-   ...
-PreInit> help execute
+PreInit> exit
 ```
 
 Use `git checkout -- mingle.cc` to get back to the latest [mingle.cc](mingle.cc).
