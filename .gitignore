@@ -21,6 +21,8 @@ mingle
 # ignore data output
 *.root
 *.csv
+*.tab
+*.txt
 
 # ignore cmake generated files
 .qt
@@ -28,10 +30,4 @@ CMakeCache.txt
 CMakeFiles
 Makefile
 cmake_install.cmake
-
-# ignore geant4 installation
-geant4/*/bin
-geant4/*/lib
-geant4/*/include
-geant4/*/share
-geant4/data
+minimum
