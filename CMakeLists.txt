@@ -18,5 +18,5 @@ if(WIN32)
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT mingle)
 endif()
 
-install(TARGETS mingle DESTINATION bin)
+install(TARGETS mingle)
 
