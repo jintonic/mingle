@@ -2,7 +2,7 @@
 [![bilibili](https://img.shields.io/badge/B-站-blue?style=flat)](https://space.bilibili.com/610308328)
 [![shimo](https://img.shields.io/badge/石-墨-lightgrey?style=flat)](https://shimo.im/docs/HJv6Qrvpx9R9wHqP)
 [![tags](https://img.shields.io/badge/Development-History-orange?style=flat)](#tags)
-[![Docker image](https://img.shields.io/badge/Docker-image-green?style=flat)](https://hub.docker.com/r/physino/mingle)
+[![Docker image](https://img.shields.io/badge/Docker-image-green?style=flat)](https://hub.docker.com/r/physino/geant4)
 
 <img src="logo.png" alt="MinGLE - Mine Geant4 Learning Example" width="35%" align="right">
 
