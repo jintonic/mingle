@@ -80,6 +80,7 @@ git show <tag>
 ```
 
 The following tags are available:
+
 [![minimum](https://img.shields.io/badge/-minimum-red?style=flat)](#minimum)
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
 [![run](https://img.shields.io/badge/+-run-yellow?style=flat)](#run)
