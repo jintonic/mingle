@@ -1,5 +1,5 @@
 # display applied commands on screen
-/control/verbose 2
+/control/verbose
 
 # construct detector geometry and physics processes
 /run/initialize
