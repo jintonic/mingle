@@ -1,11 +1,11 @@
 # display applied commands on screen
-/control/verbose 2
+/control/verbose
 
 # add more menu items in GUI 
 /control/ifInteractive gui.mac
 
 # no need of many threads for visualization
-/run/numberOfThreads 2
+/run/numberOfThreads 1
 # construct detector geometry and physics processes
 /run/initialize
 
@@ -14,9 +14,30 @@
 # list visualization setups for detector components
 /vis/geometry/list
 
-# print hierarchical structure of detector components
-/vis/ASCIITree/verbose 13
-/vis/drawTree
+# shoot 2 MeV electrons to positive x direction
+/gps/particle neutron
+/gps/energy 2 MeV
+/gps/pos/centre -20 0 0 cm
+/gps/direction 1 0 0
+
+# open a default visualization driver
+/vis/open
+# pick a component (volume) to draw (world, by default)
+/vis/drawVolume
+
+/vis/scene/add/axes
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+
+/vis/viewer/set/auxiliaryEdge 1
+
+/vis/modeling/trajectories/create/drawByParticleID
+#/vis/modeling/trajectories/drawByParticleID-0/set neutron yellow
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsColour magenta
+/vis/modeling/trajectories/list
+
+/run/beamOn 10
 
 # X-ray imaging of detector components
 /vis/open RayTracer
@@ -24,7 +45,6 @@
 /vis/viewer/set/background 1 1 1 0
 # view image from a good angle
 /vis/viewer/set/viewpointThetaPhi 60 0
-# pick a component (volume) to draw (world, by default)
 /vis/drawVolume
 # save image to g4RayTracer.*.jpeg
 # it is commented out as it is time-consuming
@@ -35,15 +55,10 @@
 /vis/drawVolume
 /vis/viewer/refresh
 
-# shoot 2 MeV electrons to positive x direction
-/gps/particle e-
-/gps/energy 2 MeV
-/gps/pos/centre -4 0 0 m
-/gps/direction 1 0 0
-
 # save detector geometry and particle tracks to g4_0?.wrl
 /vis/open VRML2FILE
 /vis/drawVolume
+/vis/scene/add/axes
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate
 /run/beamOn 10
@@ -55,4 +70,18 @@
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate
 /run/beamOn 10
+
+# save detector geometry and particle tracks to
+# g4tsg_offscreen_zb_png_?.png
+/vis/open TSG_FILE
+/vis/drawVolume
+/vis/scene/add/axes
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+/run/beamOn 10
+/vis/viewer/rebuild
+
+# print hierarchical structure of detector components
+/vis/ASCIITree/verbose 13
+/vis/drawTree
 
