@@ -66,7 +66,7 @@ int main(int argc,char** argv)
 	G4UIExecutive* ui = nullptr; // assume batch mode
 	if (argc==1) ui = new G4UIExecutive(argc, argv); // interactive mode
 
-	auto vis = new G4VisExecutive(); vis->Initialize(); // enable visialization
+	auto vis = new G4VisExecutive("quiet"); vis->Initialize(); // enable visialization
 
 	if (ui) { // interactive mode
 		ui->SessionStart(); // do this after vis
