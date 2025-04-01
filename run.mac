@@ -1,5 +1,5 @@
 # display applied commands on screen
-/control/verbose 2
+/control/verbose
 
 # construct detector geometry and physics processes
 /run/initialize
@@ -16,6 +16,7 @@
 /score/close
 /score/list
 
+/run/verbose 2
 /run/printProgress 1000
 /run/beamOn 10000
 
