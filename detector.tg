@@ -1,5 +1,5 @@
 // define a 10x10x10 m3 cubic hall filled with air
-:volu hall BOX 5*m 5*m 5*m G4_AIR
+:volu hall BOX 200 200 200 G4_AIR
 :vis hall OFF
 
 // define a cylindrical vacuum chamber made of stainless steel
