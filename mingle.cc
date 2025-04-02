@@ -84,3 +84,5 @@ int main(int argc,char** argv)
 	delete vis; delete run; // clear up memory
 	return 0;
 }
+// -*- C++; indent-tabs-mode:nil; tab-width:2 -*-
+// vim: ft=cpp:ts=2:sts=2:sw=2:et
