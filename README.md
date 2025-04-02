@@ -313,13 +313,14 @@ The [scorer](https://github.com/jintonic/mingle/releases/tag/scorer) tag marks a
 
 ```sh
 $ cd /path/to/mingle
-$ ./build/mingle run.mac
+$ ./build/mingle mesh.mac
 ```
 
 to generate two CSV files, which record numbers of steps of 6.5 MeV alpha-rays and secondary electrons in different distances from the emission point.
 
 ### Ntuple
 [![scorer](https://img.shields.io/badge/previous-tag-8033ff?style=flat)](#scorer)
+[![field](https://img.shields.io/badge/+-field-black?style=flat)](#field)
 
 The [ntuple](https://github.com/jintonic/mingle/releases/tag/ntuple) tag marks a version of `MinGLE` that uses [G4TScoreNtupleWriter][] to save important statistical parameters from a [Geant4][] simulation into [ntuples][]. Run the following commands
 
@@ -337,6 +338,20 @@ root[1] CsI_e->Draw("CsI_e_score")
 ```
 
 A volume called `CsI` made of a CsI scintillating crystal is placed in the vacuum chamber in the [detector.tg](detector.tg) file.
+
+### Field
+[![ntuple](https://img.shields.io/badge/previous-tag-red?style=flat)](#ntuple)
+
+The [field](https://github.com/jintonic/mingle/releases/tag/field) tag marks a version of `MinGLE` that uses [G4GlobalMagFieldMessenger][] to provide macro commands in `/globalField/` to set up a uniform magnetic field throughout the detector:
+
+~~~sh
+# create a B field pointing to the positive z direction
+/globalField/setValue 0 0 0.1 tesla
+# print out the setup
+/globalField/verbose 2
+~~~
+
+For more example usages, please see [gui.mac](gui.mac), which is called by [vis.mac](vis.mac).
 
 [Git]: http://git-scm.com
 [Geant4]: https://geant4.web.cern.ch
@@ -357,3 +372,4 @@ A volume called `CsI` made of a CsI scintillating crystal is placed in the vacuu
 [TTree]: https://root.cern.ch/doc/master/classTTree.html
 [ps]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html?highlight=score#list-of-available-primitive-scorers
 [G4PSEnergyDeposit]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/source/digits_hits/scorer/include/G4PSEnergyDeposit.hh
+[G4GlobalMagFieldMessenger]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/source/geometry/navigation/include/G4GlobalMagFieldMessenger.hh
