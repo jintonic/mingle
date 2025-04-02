@@ -1,5 +1,7 @@
 # display applied commands on screen
 /control/verbose
+# print output of threads separately
+/control/cout/useBuffer
 
 # construct detector geometry and physics processes
 /run/initialize
@@ -7,7 +9,7 @@
 # shoot 6.5 MeV alpha to positive x direction
 /gps/particle alpha
 /gps/energy 6.5 MeV
-/gps/pos/centre -4 0 0 m
+/gps/pos/centre -19 0 0 cm
 /gps/direction 1 0 0
 
 # print every step of simulation on screen
@@ -18,9 +20,9 @@
 /tracking/verbose 0
 
 /score/create/boxMesh mesh
-/score/mesh/boxSize 4 1 1 cm
+/score/mesh/boxSize 40 1 1 mm
 /score/mesh/nBin 40 1 1
-/score/mesh/translate/xyz -3.97 0. 0. m
+/score/mesh/translate/xyz -16 0 0 cm
 
 /score/quantity/nOfStep nOfStepEMinus
 /score/filter/particle eMinusFilter e-
