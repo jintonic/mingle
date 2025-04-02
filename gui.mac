@@ -5,6 +5,7 @@
 /gui/addButton verb /run/verbose /run/verbose
 /gui/addButton verb /control/verbose /control/verbose
 /gui/addButton verb /tracking/verbose /tracking/verbose
+/gui/addButton verb /globalField/verbose "/globalField/verbose 2"
 
 /gui/addMenu list List
 /gui/addButton list Materials "/material/nist/listMaterials all"
@@ -17,9 +18,30 @@
 /gui/addButton run "beamOn 10" "/run/beamOn 10"
 /gui/addButton run "beamOn 100" "/run/beamOn 100"
 
+/gui/addMenu e Energy
+/gui/addButton e "1 keV" "/gps/energy 1 keV"
+/gui/addButton e "1 MeV" "/gps/energy 1 MeV"
+/gui/addButton e "1 GeV" "/gps/energy 1 GeV"
+/gui/addButton e "1 TeV" "/gps/energy 1 TeV"
+
+/gui/addMenu particle Particle
+/gui/addButton particle Alpha "/gps/particle alpha"
+/gui/addButton particle Electron "/gps/particle e-"
+/gui/addButton particle Positron "/gps/particle e+"
+/gui/addButton particle Gamma "/gps/particle gamma"
+/gui/addButton particle Proton "/gps/particle proton"
+/gui/addButton particle Neutron "/gps/particle neutron"
+/gui/addButton particle "Positive Muon" "/gps/particle mu+"
+/gui/addButton particle "Negative Muon" "/gps/particle mu-"
+
 /gui/addMenu vis Visualization
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
 /gui/addButton vis "Zoom in" "/vis/viewer/zoom 1.2"
 /gui/addButton vis "Zoom out" "/vis/viewer/zoom 0.8"
 /gui/addButton vis "Take Screenshot" "/vis/ogl/export g4OpenGL.pdf"
+/gui/addButton vis "Draw B-field" "/vis/scene/add/magneticField ! lightArrow"
+/gui/addButton vis /vis/viewer/set/upVector /vis/viewer/set/upVector
+/gui/addButton vis /vis/viewer/set/viewpointVector /vis/viewer/set/viewpointVector
 
+/gui/addMenu field B-field
+/gui/addButton field /globalField/setValue /globalField/setValue 
