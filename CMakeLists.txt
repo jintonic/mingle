@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5) # CMake quits without it
+cmake_minimum_required(VERSION 3.20) # CMake quits without it
 
 project(mingle) # project name
 
@@ -14,6 +14,7 @@ target_link_libraries(mingle ${Geant4_LIBRARIES})
 if(WIN32)
   # remove Debug and other unnecessary configurations
   set(CMAKE_CONFIGURATION_TYPES "Release" CACHE INTERNAL "")
+  set(CMAKE_BUILD_TYPE "Release" CACHE INTERNAL "")
   # https://stackoverflow.com/a/37994396/1801749
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT mingle)
 endif()
