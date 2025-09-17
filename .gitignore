@@ -1,5 +1,6 @@
 # ignore executable
 mingle
+mingle.exe
 
 # ignore build directory
 *build*
