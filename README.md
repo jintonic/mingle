@@ -27,20 +27,14 @@ If you know how to use [Git][], please follow the instruction below. If you don'
 git clone https://github.com/jintonic/mingle
 # get into the mingle directory
 cd mingle
-# create a subdirectory called 'build'
-mkdir build
-# get into the build directory
-cd build
-# run cmake with default settings, or ccmake for text-based user interface (TUI)
-cmake ..
+# create a folder build/ and run cmake with default settings inside
+cmake -B build
 # compile mingle.cc
-make
+make -C build
 # run the generated executable (mingle) interactively in the current directory (./)
 ./mingle
-# go to the parent directory
-cd ..
-# run mingle in TUI even if there is GUI
-G4UI_USE_TCSH=1 ./build/mingle
+# or run mingle in TUI even if GUI is enabled in compilation
+G4UI_USE_TCSH=1 ./mingle
 
 Available UI session types: [ Qt, GAG, tcsh, csh ]
 PreInit> ls
@@ -90,6 +84,7 @@ The following tags are available:
 [![visualization](https://img.shields.io/badge/+-visualization-blueviolet?style=flat)](#visualization)
 [![scorer](https://img.shields.io/badge/+-scorer-8033ff?style=flat)](#scorer)
 [![ntuple](https://img.shields.io/badge/+-ntuple-red?style=flat)](#ntuple)
+[![field](https://img.shields.io/badge/+-field-black?style=flat)](#field)
 
 ### Minimum
 [![batch](https://img.shields.io/badge/+-batch-orange?style=flat)](#batch)
@@ -107,8 +102,8 @@ git show minimum:mingle.cc
 
 int main(int argc,char** argv)
 {
-        G4UIExecutive ui(argc, argv);
-        ui.SessionStart();
+  G4UIExecutive ui(argc, argv);
+  ui.SessionStart();
 }
 ```
 
