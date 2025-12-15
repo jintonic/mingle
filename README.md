@@ -114,12 +114,9 @@ We can save this version of `MinGLE` to current working folder, compile and run 
 ```sh
 # save (>) mingle.cc in its minimum stage to mingle.cc in current working folder
 git show minimum:mingle.cc > mingle.cc
-# create folder minimum to compile mingle.cc
-cmake -B minimum
-# compile mingle.cc in minimum/ folder
-cmake --build minimum
-# run minimum/mingle
-./minimum/mingle
+cmake -B build
+cmake --build build
+./mingle
 Available UI session types: [ tcsh, csh ]
 PreInit> exit
 ```
