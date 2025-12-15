@@ -20,7 +20,7 @@
 ## Getting started
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://youtu.be/6xqCtS38SXQ)
 
-If you know how to use [Git][], please follow the instruction below. If you don't, please download a specific version of `MinGLE` from [here](https://github.com/jintonic/mingle/tags).
+If you know how to use [Git][] in a Linux or MacOS terminal, please follow the instruction below. If you don't, or use Windows, please follow [this YouTube tutorial](https://youtu.be/6xqCtS38SXQ).
 
 ```sh
 # download mingle git repository from github to a local hard disk
@@ -42,7 +42,7 @@ Command directory path : /
  Sub-directories :
    /control/   UI control commands.
    /units/   Available units.
-   /profiler/   Profiler controls.
+   /gui/   UI interactors commands.
  Commands :
 PreInit> cd /units/
 PreInit> ls
