@@ -1,0 +1,7 @@
+# print each command on screen
+/control/verbose
+# generate macro command manual in HTML format
+/control/createHTML
+# move all HTML files into mingle/macro/
+/control/shell mkdir -p macro
+/control/shell mv *.html macro
