@@ -32,3 +32,6 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 minimum
+
+# ignore others
+macro
