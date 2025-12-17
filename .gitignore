@@ -1,10 +1,33 @@
+# ignore executable
+mingle
+mingle.exe
+
 # ignore build directory
 *build*
-
-# ignore executable
-tiny
+.vs
 
 # ignore backup files
 \#*
 .swp
 *~
+
+# ignore visualization output
+*.prim
+*.jpeg
+*.png
+*.pdf
+*.heprep
+*.wrl
+
+# ignore data output
+*.root
+*.csv
+*.tab
+*.txt
+
+# ignore cmake generated files
+.qt
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
