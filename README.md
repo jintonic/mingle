@@ -4,7 +4,7 @@
 [![tags](https://img.shields.io/badge/Development-History-orange?style=flat)](#tags)
 [![Docker image](https://img.shields.io/badge/Docker-image-green?style=flat)](https://hub.docker.com/r/physino/geant4)
 
-`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (60 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (60 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
 
 ## Prerequisites
 - [Geant4][] 10.7 or above is needed to use [G4RunManagerFactory][]
@@ -13,12 +13,12 @@
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
   - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
   - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install` in a terminal
-- [Git][] (optional, but highly recommended) for package downloading and development history browsing
+- [Git][] (optional, but highly recommended) for code downloading and development history browsing
 
 ## Getting started
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://youtu.be/6xqCtS38SXQ)
 
-If you know how to use [Git][] in a Linux or MacOS terminal, please follow the instruction below. If you don't, or use Windows, please follow [this YouTube tutorial](https://youtu.be/6xqCtS38SXQ).
+If you know how to use [Git][] in a Linux or Mac terminal, please follow the instruction below. It also works for Windows users in a [Git Bash](https://gitforwindows.org) terminal. If you don't, please follow [this YouTube tutorial](https://youtu.be/6xqCtS38SXQ).
 
 ```sh
 # download mingle git repository from github to a local hard disk
@@ -27,46 +27,17 @@ git clone https://github.com/jintonic/mingle
 cd mingle
 # create a folder build/ and run cmake with default settings inside
 cmake -B build
-# compile mingle.cc on Linux or Mac
-make -C build
-# on Windows, please use the following in Git Bash terminal instead
+# compile mingle.cc into executable mingle 
 cmake --build build --config Release
-# run the generated executable (mingle) interactively in the current directory (./)
-# or ./mingle.exe in a Git Bash terminal on Windows
-./mingle
-# or run mingle in TUI even if GUI is enabled in compilation
-G4UI_USE_TCSH=1 ./mingle
-
-Available UI session types: [ Qt, GAG, tcsh, csh ]
-PreInit> ls
-Command directory path : /
- Sub-directories :
-   /control/   UI control commands.
-   /units/   Available units.
-   /gui/   UI interactors commands.
- Commands :
-PreInit> cd /units/
-PreInit> ls
-Command directory path : /units/
-
-Guidance :
-Available units.
-
- Sub-directories :
- Commands :
-   list * full list of available units.
-PreInit> help list
-
-Command /units/list
-Guidance :
-full list of available units.
-
-PreInit> exit
+# install mingle to /path/to/Geant4/bin
+cmake --install build --config Release
+# run mingle interactively in the current folder
+mingle
 ```
-
 Note that lines start with '#' are comments, they cannot be run.
 
 ## Tags
+
 
 Whenever a new [Geant4][] component is added to `MinGLE`, a new [tag](https://github.com/jintonic/mingle/tags) is created. You can check them one by one to see how a [Geant4][] application is developed step by step from scratch using the `git show` command:
 
