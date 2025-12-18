@@ -6,13 +6,17 @@ project(mingle) # project name
 find_package(Geant4 REQUIRED ui_all vis_all) # search for Geant4Config.cmake
 include(${Geant4_USE_FILE}) # Linux cannot find Geant4 header files without it
 
-if ((NOT CMAKE_BUILD_TYPE) AND (NOT WIN32))
-  set(CMAKE_BUILD_TYPE Release CACHE STRING "Release;Debug;RelWithDebInfo;MinSizeRel" FORCE)
-endif() # set default build type for single-configuration generators, e.g. Makefile
+if(WIN32) # set config type for multi-configuration generators, e.g. Visual Studio, Xcode
+  set(CMAKE_CONFIGURATION_TYPES Release CACHE STRING "Release;Debug;..." FORCE)
+else() # set default build type for single-configuration generators, e.g. Makefile
+  if(NOT CMAKE_BUILD_TYPE) # if not defined by the user
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Release;Debug;..." FORCE)
+  endif()
+endif() # executable of Release type is leaner & faster than that of Debug type
 
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT) # if not defined by the user
   set(CMAKE_INSTALL_PREFIX "${Geant4_DIR}/../../.." CACHE PATH "Installation prefix" FORCE)
-endif() # Set default installation prefix
+endif() # set default installation prefix
 
 if(APPLE) # https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling
   set(CMAKE_INSTALL_RPATH "${Geant4_DIR}/../..")
