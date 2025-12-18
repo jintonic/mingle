@@ -7,13 +7,13 @@
 `MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (60 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, which makes it a clean starting point of writing your own [Geant4][] applications.
 
 ## Prerequisites
-- [Geant4][] 10.7 or above is needed to use
-  - [G4RunManagerFactory][]
-- [CMake](https://cmake.org/download/) 3.5 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
+- [Geant4][] 10.7 or above is needed to use [G4RunManagerFactory][]
+- [CMake](https://cmake.org/download/) 3.16 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
 - A not-so-old C++ compiler, e.g.
   - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
   - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
   - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install` in a terminal
+- [Git][] (optional, but highly recommended) for package downloading and development history browsing
 
 ## Getting started
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://youtu.be/6xqCtS38SXQ)
@@ -27,9 +27,12 @@ git clone https://github.com/jintonic/mingle
 cd mingle
 # create a folder build/ and run cmake with default settings inside
 cmake -B build
-# compile mingle.cc
+# compile mingle.cc on Linux or Mac
 make -C build
+# on Windows, please use the following in Git Bash terminal instead
+cmake --build build --config Release
 # run the generated executable (mingle) interactively in the current directory (./)
+# or ./mingle.exe in a Git Bash terminal on Windows
 ./mingle
 # or run mingle in TUI even if GUI is enabled in compilation
 G4UI_USE_TCSH=1 ./mingle
@@ -107,4 +110,7 @@ PreInit> exit
 Use `git checkout -- mingle.cc` to get back to the latest [mingle.cc](mingle.cc).
 
 
-
+[Geant4]: https://geant4.web.cern.ch
+[Git]: https://git-scm.com
+[G4RunManagerFactory]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/mainProgram.html#g4runmanager
+[G4UIExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html?highlight=g4uiexecutive#how-to-select-interface-in-your-applications
