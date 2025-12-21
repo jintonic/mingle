@@ -127,8 +127,7 @@ git show v0:mingle.cc
 ```
 ```cpp
 #include <G4UIExecutive.hh>
-
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
   G4UIExecutive ui(argc, argv);
   ui.SessionStart();
