@@ -1,3 +1,5 @@
+/gui/clearMenu
+
 # create menu "Window"
 /gui/addMenu window Window
 /gui/addButton window Close exit
@@ -8,7 +10,7 @@
 
 # create menu "Execute"
 /gui/addMenu exe Execute
-/gui/addButton exe "a shell cmd" "/control/shell"
+/gui/addButton exe "a system cmd" "/gui/system"
 /gui/addButton exe "a macro file" "/control/execute"
 
 # create menu "Help"
