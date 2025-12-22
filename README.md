@@ -144,6 +144,8 @@ git switch ui
 
 and compile and run it using instructions in the [Getting Started](#getting-started) section.
 
+[menu.mac](menu.mac) can be loaded in a GUI session to add menu items to the GUI. [run.mac](run.mac) can be loaded in a GUI or run in a TUI using the macro command `/control/execute run.mac`. They are used to demonstrate the usage of interactive UI, macro commands, and macro files.
+
 [Geant4]: https://geant4.web.cern.ch
 [Git]: https://git-scm.com
 [CMake]: https://cmake.org
