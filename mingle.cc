@@ -1,7 +1,6 @@
 #include <G4UIExecutive.hh>
 #include <G4UImanager.hh>
-
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
 	if (argc==1) { // interactive mode
 		G4UIExecutive ui(argc, argv);
