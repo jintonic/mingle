@@ -4,18 +4,20 @@
 [![Guided Development](https://img.shields.io/badge/Guided-Development-orange?style=flat)](#guided-development)
 [![Docker Image](https://img.shields.io/badge/Docker-Image-green?style=flat)](https://hub.docker.com/r/physino/geant4)
 
-`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (60 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (less than 70 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
 
 ## Prerequisites
+
 - [Geant4][] 10.7 or above is needed to use [G4RunManagerFactory][]
 - [CMake](https://cmake.org/download/) 3.16 or above is needed to compile [mingle.cc](mingle.cc) across multiple operating systems
 - A not-so-old C++ compiler, e.g.
-  - [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) for Windows
-  - [GCC](https://gcc.gnu.org/) (4.9 or above) for Linux
+  - [Visual studio](https://visualstudio.microsoft.com/downloads/) for Windows
+  - [GCC](https://gcc.gnu.org/) for Linux
   - [clang](https://clang.llvm.org/) for MacOS installed by running `xcode-select --install` in a terminal
 - [Git][] (optional, but highly recommended) for code downloading and development history browsing
 
 ## Getting started
+
 [![YouTube](https://img.shields.io/badge/You-Tube-red?style=flat)](https://youtu.be/6xqCtS38SXQ)
 
 If you know how to use [Git][] and [CMake][] in a Linux or Mac terminal, please follow the instruction below. It also works for Windows users in a [Git Bash](https://gitforwindows.org) terminal. If you don't, please follow [this YouTube tutorial](https://youtu.be/6xqCtS38SXQ).
@@ -42,13 +44,14 @@ mingle
 - The `cmake --install` command will install the `mingle` executable to the `bin/` directory of your Geant4 installation path (detected during the `cmake -B build` step) based on the settings in [CMakeLists.txt](CMakeLists.txt). This saves you a manual configuration step. Since a successful Geant4 installation already requires its `bin/` folder to be in your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (usually via the [geant4.sh][post_installation] or [geant4.bat][post_installation] setup scripts), `mingle` becomes globally available immediately. You can simply type `mingle` from any directory in your terminal to start the application.
 
 ## Guided Development
+
 There are two primary ways to teach a complex software framework like Geant4. The first is to disassemble a finished, feature-complete application to see how it works. However, for a beginner, this "reverse engineering" often feels like trying to learn how an engine works by looking at a fully assembled car. The second way, and the one MinGLE adopts, is to evolve the code step-by-step. By building the application one component at a time, you see the specific necessity of every line of code as it is added. This "bottom-up" approach ensures that you are never overwhelmed by boilerplate, as each stage introduces exactly one new concept.
 
-To facilitate this step-by-step journey, MinGLE utilizes two core features of the [Git][] version control system: branches and tags. Think of a branch as a living workspace dedicated to a specific topic, like [ui](https://github.com/jintonic/mingle/tree/ui) or [physics](https://github.com/jintonic/mingle/tree/physics). It is a place where code is active and can be modified. A tag is like a high-resolution "snapshot" or a "version", like [v0](https://github.com/jintonic/mingle/releases/tag/v0). It marks a specific moment in time when that stage was perfectly finished and tested.
+To facilitate this step-by-step journey, MinGLE utilizes two core features of the [Git][] version control system: branches and tags. Think of a branch as a living workspace dedicated to a specific topic, like [ui][] or [physics][] It is a place where code is active and can be modified. A tag is like a high-resolution "snapshot" or a "version", like [v0][]. It marks a specific moment in time when that stage was perfectly finished and tested.
 
 In a typical Geant4 example, the source code contains hundreds of lines of boilerplate. In `MinGLE`'s guided development roadmap built with Git branches and tags,
-- each branch (e.g., [ui](https://github.com/jintonic/mingle/tree/ui)) represents a learning milestone associated with a specific Geant4 component, and
-- each tag (e.g., [v0](https://github.com/jintonic/mingle/releases/tag/v0)) marks a stable, working version of that milestone:
+- each branch (e.g., [ui][]) represents a learning milestone associated with a specific Geant4 component, and
+- each tag (e.g., [v0][]) marks a stable, working version of that milestone:
 
 | Stage | Milestone | Branch | Tag | Focus |
 | :--- | :--- | :--- | :--- | :--- |
@@ -70,6 +73,7 @@ This structure serves the following pedagogic purposes:
 - **Stable Checkpoints**: Tags provide a "correct answer". If your experiments in a branch lead to errors, you can always compare your work against the corresponding tag to find the solution.
 
 ### Navigating Development Milestones
+
 New to [Git][]? You can explore every stage of this project directly on the GitHub website using the Branch and Tag selectors at the top of the file list. However, to run the code locally, please use the terminal commands below.
 
 Tags allow you to inspect the code at specific points in its evolution without changing your files:
@@ -116,9 +120,6 @@ Later, use `git stash pop` to bring your changes back.
 
 
 ### User Interface
-
-[![Branch](https://img.shields.io/badge/Branch-ui-red?style=flat)](https://github.com/jintonic/mingle/tree/ui)
-[![Tag](https://img.shields.io/badge/Tag-v0-blue?style=flat)](https://github.com/jintonic/mingle/releases/tag/v0)
 
 Believe it or not, six lines of C++ are enough to create a [Geant4][] application that can be launched. A tag [v0][] is created for you to have a snick peek at the code:
 
