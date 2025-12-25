@@ -1,8 +1,7 @@
 #include <G4RunManagerFactory.hh>
 #include <G4UIExecutive.hh>
 #include <G4UImanager.hh>
-
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
 	auto *run = G4RunManagerFactory::CreateRunManager();
 
