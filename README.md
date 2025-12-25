@@ -157,7 +157,7 @@ mingle run.mac
 
 ### Run Manager
 
-The tag [v2][] on the tip of the [run][] branch marks a version of `mingle` that creates a [Geant4][] [Run][] [Manager][runman] using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] [Managers][runman] using an environment variable `G4RUN_MANAGER_TYPE`:
+The tag [v2][] on the tip of the [run][] branch marks a version of `mingle` that creates a [Geant4][] [Run][] manager using [G4RunManagerFactory][] that is only introduced until [Geant4][] 10.7, which allows the switching in between various [Run][] managers using an environment variable `G4RUN_MANAGER_TYPE`:
 
 ```sh
 # run mingle in serial mode
@@ -178,10 +178,9 @@ $ G4RUN_MANAGER_TYPE=MT mingle
 [Git]: https://git-scm.com
 [CMake]: https://cmake.org
 [post_installation]: https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/postinstall.html
-[G4RunManagerFactory]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/source/run/include/G4RunManagerFactory.hh
+[G4RunManagerFactory]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/mainProgram.html#g4runmanager
 [G4UIExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html?highlight=g4uiexecutive#how-to-select-interface-in-your-applications
 [Run]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Fundamentals/run.html
-[runman]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/mainProgram.html#g4runmanager
 
 [user interface]: https://github.com/jintonic/mingle?tab=readme-ov-file#user-interface
 [batch execution]: https://github.com/jintonic/mingle?tab=readme-ov-file#batch-execution
