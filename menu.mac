@@ -1,2 +1,19 @@
+
+/gui/clearMenu
+
+# create menu "Window"
 /gui/addMenu window Window
 /gui/addButton window Close exit
+
+# create menu "Verbosity"
+/gui/addMenu verb Verbosity
+/gui/addButton verb /control/verbose "/control/verbose 1"
+
+# create menu "Execute"
+/gui/addMenu exe Execute
+/gui/addButton exe "a system cmd" "/gui/system"
+/gui/addButton exe "a macro file" "/control/execute"
+
+# create menu "Help"
+/gui/addMenu help Help
+/gui/addButton help Macros "/control/manual /"
