@@ -4,7 +4,7 @@
 [![Guided Development](https://img.shields.io/badge/Guided-Development-orange?style=flat)](#guided-development)
 [![Docker Image](https://img.shields.io/badge/Docker-Image-green?style=flat)](https://hub.docker.com/r/physino/geant4)
 
-`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (less than 70 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (less than 70 lines of code) to demonstrate the usage of 10 essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ git clone https://github.com/jintonic/mingle
 cd mingle
 # create a folder build/ and run cmake with default settings inside
 cmake -B build
-# compile mingle.cc into executable mingle 
+# compile mingle.cc into executable mingle
 cmake --build build --config Release
 # install mingle to /path/to/Geant4/bin
 cmake --install build --config Release
@@ -39,8 +39,8 @@ mingle
 
 > **Note:**
 - lines start with `#` are comments, they cannot be run.
-- `--config Release` is primarily for Windows/Visual Studio, it can be ignored on Linux and MacOS. 
-- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`. 
+- `--config Release` is primarily for Windows/Visual Studio, it can be ignored on Linux and MacOS.
+- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`.
 - The `cmake --install` command will install the `mingle` executable to the `bin/` directory of your Geant4 installation path (detected during the `cmake -B build` step) based on the settings in [CMakeLists.txt](CMakeLists.txt). This saves you a manual configuration step. Since a successful Geant4 installation already requires its `bin/` folder to be in your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (usually via the [geant4.sh][post_installation] or [geant4.bat][post_installation] setup scripts), `mingle` becomes globally available immediately. You can simply type `mingle` from any directory in your terminal to start the application.
 
 ## Guided Development
@@ -74,7 +74,7 @@ This structure serves the following pedagogic purposes:
 
 ### Navigating Development Milestones
 
-New to [Git][]? You can explore every stage of this project directly on the GitHub website using the Branch and Tag selectors at the top of the file list. However, to run the code locally, please use the terminal commands below.
+New to [Git][]? You can explore every stage of this project directly on the GitHub website using the branch and tag selectors at the top of the file list. However, to run the code locally, please use the terminal commands below.
 
 Tags allow you to inspect the code at specific points in its evolution without changing your files:
 
@@ -117,7 +117,6 @@ git stash
 git switch main
 ```
 Later, use `git stash pop` to bring your changes back.
-
 
 ### User Interface
 
