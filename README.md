@@ -29,7 +29,7 @@ git clone https://github.com/jintonic/mingle
 cd mingle
 # create a folder build/ and run cmake with default settings inside
 cmake -B build
-# compile mingle.cc into executable mingle 
+# compile mingle.cc into executable mingle
 cmake --build build --config Release
 # install mingle to /path/to/Geant4/bin
 cmake --install build --config Release
@@ -39,8 +39,8 @@ mingle
 
 > **Note:**
 - lines start with `#` are comments, they cannot be run.
-- `--config Release` is primarily for Windows/Visual Studio, it can be ignored on Linux and MacOS. 
-- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`. 
+- `--config Release` is primarily for Windows/Visual Studio, it can be ignored on Linux and MacOS.
+- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`.
 - The `cmake --install` command will install the `mingle` executable to the `bin/` directory of your Geant4 installation path (detected during the `cmake -B build` step) based on the settings in [CMakeLists.txt](CMakeLists.txt). This saves you a manual configuration step. Since a successful Geant4 installation already requires its `bin/` folder to be in your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (usually via the [geant4.sh][post_installation] or [geant4.bat][post_installation] setup scripts), `mingle` becomes globally available immediately. You can simply type `mingle` from any directory in your terminal to start the application.
 
 ## Guided Development
