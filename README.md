@@ -29,7 +29,7 @@ git clone https://github.com/jintonic/mingle
 cd mingle
 # create a folder build/ and run cmake with default settings inside
 cmake -B build
-# compile mingle.cc into executable mingle 
+# compile mingle.cc into executable mingle
 cmake --build build --config Release
 # install mingle to /path/to/Geant4/bin
 cmake --install build --config Release
