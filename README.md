@@ -4,7 +4,7 @@
 [![Guided Development](https://img.shields.io/badge/Guided-Development-orange?style=flat)](#guided-development)
 [![Docker Image](https://img.shields.io/badge/Docker-Image-green?style=flat)](https://hub.docker.com/r/physino/geant4)
 
-`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (less than 70 lines of code) to demonstrate the usage of essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
+`MinGLE`, a Mini [Geant4][] Learning Example, uses minimal C++ coding (less than 70 lines of code) to demonstrate the usage of 10 essential [Geant4][] components step by step. It is not tied to any specific experiment or third party library, making it a clean template to start your own [Geant4][] applications.
 
 ## Prerequisites
 
