@@ -1,6 +1,7 @@
-# display applied commands on screen
-/control/verbose 2
-
-# add more menu items in GUI 
-/control/ifInteractive gui.mac
-
+# print each command on screen
+/control/verbose
+# generate macro command manual in HTML format
+/control/createHTML
+# print environment variable PATH
+/control/getEnv PATH
+/control/listAlias
