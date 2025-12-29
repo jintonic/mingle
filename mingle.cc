@@ -2,13 +2,12 @@
 #include <G4PhysListFactory.hh>
 #include <G4UIExecutive.hh>
 #include <G4UImanager.hh>
-
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
 	auto *run = G4RunManagerFactory::CreateRunManager();
 
-	G4PhysListFactory factory;
-	run->SetUserInitialization(factory.ReferencePhysList());
+	// load default physics list, or the one specified by $PHYSLIST
+	G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
 
 	if (argc==1) { // interactive mode
 		G4UIExecutive ui(argc, argv);
