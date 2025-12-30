@@ -214,4 +214,3 @@ $ G4RUN_MANAGER_TYPE=MT mingle
 [v7]: https://github.com/jintonic/mingle/releases/tag/v7
 [v8]: https://github.com/jintonic/mingle/releases/tag/v8
 [v9]: https://github.com/jintonic/mingle/releases/tag/v9
-
