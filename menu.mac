@@ -10,9 +10,10 @@
 
 # create menu "Execute"
 /gui/addMenu exe Execute
-/gui/addButton exe "a system cmd" "/gui/system"
-/gui/addButton exe "a macro file" "/control/execute"
+/gui/addButton exe "A System Command" "/gui/system"
+/gui/addButton exe "A Macro File" "/control/execute"
 
 # create menu "Help"
 /gui/addMenu help Help
-/gui/addButton help Macros "/control/manual /"
+/gui/addButton help "Print Macros" "/control/manual /"
+/gui/addButton help "Generate Manual" "/control/createHTML"
