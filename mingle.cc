@@ -4,7 +4,7 @@
 #include <G4UImanager.hh>
 int main(int argc, char** argv)
 {
-  auto *run = G4RunManagerFactory::CreateRunManager();
+  auto run = G4RunManagerFactory::CreateRunManager();
 
   // load default physics list, or the one specified by $PHYSLIST
   G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
