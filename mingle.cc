@@ -3,10 +3,10 @@
 class Detector : public G4VUserDetectorConstruction
 {
   public:
-	G4VPhysicalVolume* Construct() {
-	  G4tgbVolumeMgr::GetInstance()->AddTextFile("detector.tg");
-	  return G4tgbVolumeMgr::GetInstance()->ReadAndConstructDetector();
-	} ///< load detector definition from a text file "detector.tg"
+    G4VPhysicalVolume* Construct() {
+      G4tgbVolumeMgr::GetInstance()->AddTextFile("detector.tg");
+      return G4tgbVolumeMgr::GetInstance()->ReadAndConstructDetector();
+    } ///< load detector definition from a text file "detector.tg"
 };
 
 #include <G4RunManagerFactory.hh>
