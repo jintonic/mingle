@@ -57,12 +57,12 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 
 | Milestone | Branch | Tag | New Concepts |
 | :--- | :--- | :--- | :--- |
-| 0 | [ui][] | [v0][] | interact with Geant4 via TUI/GUI and navigate the macro command tree |
+| 0 | [ui][] | [v0][] | [G4UIExecutive][], and navigate the macro command tree |
 | 1 | [batch][] | [v1][] | transition from interactive exploration to automated batch-mode execution |
 | 2 | [run][] | [v2][] | [G4RunManagerFactory][], and the lifecycle of a simulation (run, event, etc.) |
 | 3 | [physics][] | [v3][] | [G4PhysListFactory][], and validated, high-level physics models |
 | 4 | [detector][] | [v4][] | define detector geometry and materials using simple syntax in text files |
-| 5 | [gps][] | [v5][] | control particle generation dynamically with the General Particle Source ([GPS][]) |
+| 5 | [gps][] | [v5][] | control particle generation with the General Particle Source ([GPS][]) |
 | 6 | [vis][] | [v6][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
 | 7 | [score][] | [v7][] | use built-in command-line mesh scorers to generate histograms of dose, flux, etc. |
 | 8 | [ntuple][] | [v8][] | use `G4AnalysisManager` to save ntuples in ROOT or CSV format |
