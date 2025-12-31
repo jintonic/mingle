@@ -1,3 +1,4 @@
+# clear existing menu
 /gui/clearMenu
 
 # create menu "Window"
