@@ -32,5 +32,5 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 
-# ignore others
-macro
+# ignore macro command manual
+_*.html
