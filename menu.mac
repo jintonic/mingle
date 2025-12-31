@@ -8,6 +8,9 @@
 # create menu "Verbosity"
 /gui/addMenu verb Verbosity
 /gui/addButton verb /control/verbose "/control/verbose 1"
+/gui/addButton verb /tracking/verbose "/tracking/verbose 2"
+/gui/addButton verb /process/verbose "/process/verbose 0"
+/gui/addButton verb /run/verbose "/run/verbose 2"
 
 # create menu "Execute"
 /gui/addMenu exe Execute
@@ -18,3 +21,4 @@
 /gui/addMenu help Help
 /gui/addButton help "Print Macros" "/control/manual /"
 /gui/addButton help "Generate Manual" "/control/createHTML"
+/gui/addButton help "List Units" "/units/list"
