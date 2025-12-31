@@ -1,7 +1,5 @@
-# print each command on screen
+# print each macro command on screen
 /control/verbose
-# generate macro command manual in HTML format
-/control/createHTML
-# print environment variable PATH
-/control/getEnv PATH
-/control/listAlias
+
+# set seeds for random number generator
+/random/setSeeds 12345 2374 23457

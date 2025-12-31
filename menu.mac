@@ -22,3 +22,5 @@
 /gui/addButton help "Print Macros" "/control/manual /"
 /gui/addButton help "Generate Manual" "/control/createHTML"
 /gui/addButton help "List Units" "/units/list"
+/gui/addButton help "List Particles" "/particle/list all"
+/gui/addButton help "List Materials" "/material/nist/listMaterials all"
