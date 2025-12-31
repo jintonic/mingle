@@ -189,6 +189,8 @@ G4PhysListFactory::GetReferencePhysList <FTFP_BERT_EMV>  EMoption= 1
 <<< Reference Physics List FTFP_BERT_EMV is built
 ```
 
+Two new macro command sets (`/physics_lists/`, `/material/`) become available with the creation of the physics list. `/particle/list` now can really be used to list all particles available in Geant4 and are added to [menu.mac](menu.mac) together with `/material/nist/listMaterials` as items in the "Help" menu. More sub commands are added to `/process/` and `/particle/` as well.
+
 ### Detector Definition
 
 The tag [v4][] on the tip of the [detector][] branch marks a version of `MinGLE` that can [load detector definition from a text file][tg], [detector.tg](detector.tg), where a 10 x 10 x 10 cubic meter experimental hall filled with air is defined using a [simple syntax introduced since Geant4.9.2][tg] as a simple example:
