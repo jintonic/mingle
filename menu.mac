@@ -1,0 +1,33 @@
+# print each macro command on screen
+/control/verbose
+
+# clear existing menu
+/gui/clearMenu
+
+/gui/addMenu det Detector
+/gui/addButton det "Check Volume Overlapping (After /run/initialize)" "/geometry/test/run"
+
+/gui/addMenu exe Execute
+/gui/addButton exe "A System Command" "/gui/system"
+/gui/addButton exe "A Macro File" "/control/execute"
+
+/gui/addMenu run Run
+/gui/addButton run "Initialize" "/run/initialize"
+/gui/addButton run "Set Number of Threads" "/run/numberOfThreads"
+
+/gui/addMenu verb Verbosity
+/gui/addButton verb "Disable EM Process Verbosity" "/process/em/verbose 0"
+/gui/addButton verb "Disable Hadronic Process Verbosity" "/process/had/verbose 0"
+/gui/addButton verb "Enable Run Verbosity" "/run/verbose 2"
+/gui/addButton verb "Set Macro Cmd Verbosity" "/control/verbose"
+
+/gui/addMenu window Window
+/gui/addButton window Close exit
+
+/gui/addMenu help Help
+/gui/addButton help "Print Macro Commands on Screen" "/control/manual /"
+/gui/addButton help "Generate Manual in HTML Format" "/control/createHTML"
+/gui/addButton help "List Materials" "/material/nist/listMaterials all"
+/gui/addButton help "List Particles" "/particle/list all"
+/gui/addButton help "List Processes (After /run/initialize)" "/process/list all"
+/gui/addButton help "List Units" "/units/list"
