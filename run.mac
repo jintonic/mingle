@@ -1,7 +1,7 @@
 # print each command on screen
 /control/verbose
-# generate macro command manual in HTML format
-/control/createHTML
-# print environment variable PATH
+
+# print environment variables
 /control/getEnv PATH
+/control/getEnv GEANT4_DATA_DIR
 /control/listAlias
