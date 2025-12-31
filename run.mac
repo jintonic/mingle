@@ -1,5 +1,20 @@
 # print each macro command on screen
 /control/verbose
 
-# set seeds for random number generator
-/random/setSeeds 12345 2374 23457
+# avoid intertwined outputs from threads
+/control/cout/useBuffer
+
+# disable massive output that may confuse a beginner
+/process/em/verbose 0
+/process/had/verbose 0
+
+# show in detail how a run is done
+/run/verbose 2
+# load detector definition and physics processes
+/run/initialize
+
+# check overlapping between detector volumes
+/geometry/test/run
+
+# print physics processes
+/process/list
