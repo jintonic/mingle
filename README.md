@@ -193,7 +193,7 @@ G4PhysListFactory::GetReferencePhysList <FTFP_BERT_EMV>  EMoption= 1
 <<< Reference Physics List FTFP_BERT_EMV is built
 ```
 
-Two new macro command sets (`/physics_lists/`, `/material/`) become available with the creation of the physics list. `/particle/list` now can really be used to list all particles available in Geant4 and are added to [menu.mac](menu.mac) together with `/material/nist/listMaterials` as items in the "Help" menu. More sub commands are added to `/process/` and `/particle/` as well.
+Two new macro command sets (`/physics_lists/`, `/material/`) become available with the creation of the physics list. `/particle/list` now can really be used to list all particles available in Geant4 and is added to [menu.mac](menu.mac) together with `/material/nist/listMaterials` as items in the "Help" menu. More sub commands become available in `/process/` and `/particle/` as well.
 
 ### Detector Definition
 
