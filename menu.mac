@@ -1,4 +1,4 @@
-
+# clear existing menu
 /gui/clearMenu
 
 # create menu "Window"
@@ -8,12 +8,17 @@
 # create menu "Verbosity"
 /gui/addMenu verb Verbosity
 /gui/addButton verb /control/verbose "/control/verbose 1"
+/gui/addButton verb /tracking/verbose "/tracking/verbose 2"
+/gui/addButton verb /process/verbose "/process/verbose 0"
+/gui/addButton verb /run/verbose "/run/verbose 2"
 
 # create menu "Execute"
 /gui/addMenu exe Execute
-/gui/addButton exe "a system cmd" "/gui/system"
-/gui/addButton exe "a macro file" "/control/execute"
+/gui/addButton exe "A System Command" "/gui/system"
+/gui/addButton exe "A Macro File" "/control/execute"
 
 # create menu "Help"
 /gui/addMenu help Help
-/gui/addButton help Macros "/control/manual /"
+/gui/addButton help "Print Macros" "/control/manual /"
+/gui/addButton help "Generate Manual" "/control/createHTML"
+/gui/addButton help "List Units" "/units/list"
