@@ -1,35 +1,28 @@
-# display applied commands on screen
-/control/verbose 2
+# avoid intertwined outputs from threads
+/control/cout/useBuffer
 
-# construct detector geometry and physics processes
+# disable massive output that may confuse a beginner
+/process/em/verbose 0
+/process/had/verbose 0
+
+# simulate one event per thread
+/run/numberOfThreads 5
+# load detector definition and physics processes
 /run/initialize
 
-# check overlapping in between detector volumes
-/geometry/test/run
+# mimick Geant4 basic example B1
+/gps/particle proton
+/gps/energy 210 MeV
+/gps/direction 0 0 1
+/gps/pos/centre 0 0 -150 mm
+# start from a 80x80 mm2 square plane
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/halfx 80 mm
+/gps/pos/halfy 80 mm
 
-# print hierarchical structure of detector components
-/vis/ASCIITree/verbose 13
-/vis/drawTree
-
-# shoot 2 MeV electrons to positive x direction
-/gps/particle e-
-/gps/energy 2 MeV
-/gps/pos/centre -4 0 0 m
-/gps/direction 1 0 0
-
-# print every step of simulation on screen
+# show in detail how an event is simulated
 /tracking/verbose 2
-# simulate a few events
-/run/beamOn 2
 
-# disable verbose output for serious simulation
-/vis/disable
-/tracking/verbose 0
-
-# set random seeds
-/random/setSeeds 23 234 53 89 157
-
-/run/verbose 2
-/run/printProgress 10000
-/run/beamOn 100000
-
+# simulate 5 events
+/run/beamOn 5

@@ -1,15 +1,10 @@
-// define a 10x10x10 m3 cubic hall filled with air
-:volu hall BOX 5*m 5*m 5*m G4_AIR
-:vis hall OFF
-
-// define a cylindrical vacuum chamber made of stainless steel
-:volu chamber TUBE 0 1*m 1*m G4_STAINLESS-STEEL
-:color chamber 0.3 0.7 0.2
-
-:volu vacuum TUBE 0 0.99*m 0.99*m G4_Galactic
-:color vacuum 0.3 0.7 0.2
+// from Geant4 basic example B1
+:volu World BOX 120 120 180 G4_AIR
+:volu Envelope BOX 100 100 150 G4_WATER
+:volu Shape1 CONS 0 20 0 40 30 0 360 G4_A-150_TISSUE
+:volu Shape2 TRD 60 60 50 80 30 G4_BONE_COMPACT_ICRU
 
 :rotm r000 0 0 0
-:place chamber 1 hall r000 0 0 0
-:place vacuum 2 chamber r000 0 0 0
-
+:place Envelope 1 World  r000 0  0   0
+:place Shape1 1 Envelope r000 0  20 -70
+:place Shape2 2 Envelope r000 0 -10  70
