@@ -64,7 +64,7 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 | 4 | [detector][] | [v4][] | define detector geometry and materials using simple syntax in text files |
 | 5 | [gps][] | [v5][] | control particle generation with the [General Particle Source][] |
 | 6 | [vis][] | [v6][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
-| 7 | [score][] | [v7][] | use built-in command-line mesh scorers to generate histograms of dose, flux, etc. |
+| 7 | [scorer][] | [v7][] | use built-in command-line mesh scorers to generate histograms of dose, flux, etc. |
 | 8 | [ntuple][] | [v8][] | use `G4AnalysisManager` to save ntuples in ROOT or CSV format |
 | 9 | [field][] | [v9][] | add electromagnetic field managers to simulate particle deflection |
 
@@ -136,7 +136,7 @@ Later, use `git stash pop` to bring your changes back.
 [detector]: https://github.com/jintonic/mingle/tree/detector
 [gps]: https://github.com/jintonic/mingle/tree/gps
 [vis]: https://github.com/jintonic/mingle/tree/vis
-[score]: https://github.com/jintonic/mingle/tree/score
+[scorer]: https://github.com/jintonic/mingle/tree/scorer
 [ntuple]: https://github.com/jintonic/mingle/tree/ntuple
 [field]: https://github.com/jintonic/mingle/tree/field
 
