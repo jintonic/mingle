@@ -16,5 +16,12 @@
 # check overlapping between detector volumes
 /geometry/test/run
 
-# print physics processes
-/process/list
+# show in detail how an event is simulated
+/tracking/verbose 2
+
+# 6 MeV gamma-ray beam from the center toward -z
+/gps/particle gamma
+/gps/energy 6 MeV
+
+# simulate 5 events
+/run/beamOn 5
