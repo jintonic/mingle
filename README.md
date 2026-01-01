@@ -1,4 +1,4 @@
-The [v5][] tag on the tip of the [gps][] branch marks a version of [MinGLE][] that uses the [Geant4][] general particle source ([GPS][]) to generate primary particles, from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
+The [v5][] tag on the tip of the [gps branch][] marks a version of [MinGLE][] that uses the [Geant4][] general particle source ([GPS][]) to generate primary particles, from which a [Geant4][] simulation starts, as demonstrated in the following sketch:
 
 <img src="https://github.com/jintonic/gears/blob/master/examples/output/tracks.png" style="width:100%" alt="tracks.png">
 
@@ -62,5 +62,5 @@ Event modulo is reduced to 1 (was 2) to distribute events to all threads.
 [MinGLE]: https://github.com/jintonic/mingle
 [B1]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/basic/B1/src/PrimaryGeneratorAction.cc#L67
 [GPS]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
-[gps]: https://github.com/jintonic/mingle/tree/gps
+[gps branch]: https://github.com/jintonic/mingle/tree/gps
 [v5]: https://github.com/jintonic/mingle/releases/tag/v5
