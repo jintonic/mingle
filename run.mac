@@ -1,27 +1,20 @@
-# display applied commands on screen
-/control/verbose 2
+# print each macro command on screen
+/control/verbose
 
-# add more menu items in GUI 
-/control/ifInteractive gui.mac
+# avoid intertwined outputs from threads
+/control/cout/useBuffer
 
-# create detector geometry and physics processes
+# disable massive output that may confuse a beginner
+/process/em/verbose 0
+/process/had/verbose 0
+
+# show in detail how a run is done
+/run/verbose 2
+# load detector definition and physics processes
 /run/initialize
 
-# check overlapping in between detector volumes
+# check overlapping between detector volumes
 /geometry/test/run
 
-# shoot 2 MeV electrons to positive x direction
-/gps/particle e-
-/gps/energy 2 MeV
-/gps/pos/centre -4 0 0 m
-/gps/direction 1 0 0
-
-# print every step of simulation on screen
-/tracking/verbose 2
-
-# set random seeds
-/random/setSeeds 23 234 53 89 157
-
-# simulate one event
-/run/beamOn 1
-
+# print physics processes
+/process/list
