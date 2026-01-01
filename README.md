@@ -62,7 +62,7 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 | 2 | [run][] | [v2][] | [G4RunManagerFactory][], and the lifecycle of a simulation (run, event, etc.) |
 | 3 | [physics][] | [v3][] | [G4PhysListFactory][], and validated, high-level physics models |
 | 4 | [detector][] | [v4][] | define detector geometry and materials using simple syntax in text files |
-| 5 | [gps][] | [v5][] | control particle generation with the General Particle Source ([GPS][]) |
+| 5 | [gps][] | [v5][] | control particle generation with the [General Particle Source][] |
 | 6 | [vis][] | [v6][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
 | 7 | [score][] | [v7][] | use built-in command-line mesh scorers to generate histograms of dose, flux, etc. |
 | 8 | [ntuple][] | [v8][] | use `G4AnalysisManager` to save ntuples in ROOT or CSV format |
@@ -127,7 +127,7 @@ Later, use `git stash pop` to bring your changes back.
 [G4RunManagerFactory]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/mainProgram.html#g4runmanager
 [G4PhysListFactory]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/UserActions/mandatoryActions.html?highlight=physlistfac#building-physics-list-using-factory
 [G4UIExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html?highlight=g4uiexecutive#how-to-select-interface-in-your-applications
-[GPS]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
+[General Particle Source]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
 
 [ui]: https://github.com/jintonic/mingle/tree/ui
 [batch]: https://github.com/jintonic/mingle/tree/batch
