@@ -1,6 +1,3 @@
-# print each macro command on screen
-/control/verbose
-
 # avoid intertwined outputs from threads
 /control/cout/useBuffer
 
@@ -8,20 +5,24 @@
 /process/em/verbose 0
 /process/had/verbose 0
 
-# show in detail how a run is done
-/run/verbose 2
+# simulate one event per thread
+/run/numberOfThreads 5
 # load detector definition and physics processes
 /run/initialize
 
-# check overlapping between detector volumes
-/geometry/test/run
+# mimick Geant4 basic example B1
+/gps/particle proton
+/gps/energy 210 MeV
+/gps/direction 0 0 1
+/gps/pos/centre 0 0 -150 mm
+# start from a 80x80 mm2 square plane
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/halfx 80 mm
+/gps/pos/halfy 80 mm
 
 # show in detail how an event is simulated
 /tracking/verbose 2
-
-# 6 MeV gamma-ray beam from the center toward -z
-/gps/particle gamma
-/gps/energy 6 MeV
 
 # simulate 5 events
 /run/beamOn 5
