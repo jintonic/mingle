@@ -5,24 +5,49 @@
 /process/em/verbose 0
 /process/had/verbose 0
 
-# simulate one event per thread
-/run/numberOfThreads 5
+# single thread is enough for visualization
+/run/numberOfThreads 1
 # load detector definition and physics processes
 /run/initialize
 
-# mimick Geant4 basic example B1
-/gps/particle proton
-/gps/energy 210 MeV
-/gps/direction 0 0 1
-/gps/pos/centre 0 0 -150 mm
-# start from a 80x80 mm2 square plane
-/gps/pos/type Plane
-/gps/pos/shape Square
-/gps/pos/halfx 80 mm
-/gps/pos/halfy 80 mm
+# list available visualization drivers
+/vis/list
+# list visualization setups for detector components
+/vis/geometry/list
 
-# show in detail how an event is simulated
-/tracking/verbose 2
+# show in detail how visualization is done
+/vis/verbose 4
 
-# simulate 5 events
-/run/beamOn 5
+# save detector geometry to g4RayTracer*?.jpeg
+/vis/open RayTracer
+/vis/drawVolume
+/vis/viewer/set/background white
+# different values in xyz for better shading
+/vis/viewer/set/lightsVector 1 2 0
+/vis/viewer/set/viewpointVector 2 1 1
+/vis/viewer/refresh
+
+# save detector geometry to g4tsg*?.png
+/vis/open TSG_FILE
+/vis/drawVolume
+/vis/viewer/set/background white
+# show auxiliary edges for better cone visualization
+/vis/viewer/set/auxiliaryEdge
+/vis/scene/add/axes
+/vis/viewer/refresh
+# save detector geometry to detector.pdf
+/vis/tsg/export gl2ps_pdf detector.pdf
+
+# save detector geometry to g4_000?.prim
+/vis/open DAWNFILE
+/vis/drawVolume
+/vis/viewer/refresh
+
+# save detector geometry to g4_0?.wrl
+/vis/open VRML2FILE
+/vis/drawVolume
+/vis/viewer/refresh
+
+# screen dump hierarchical detector structure
+/vis/ASCIITree/verbose 13
+/vis/drawTree
