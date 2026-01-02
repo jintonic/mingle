@@ -58,6 +58,8 @@ Event modulo is reduced to 1 (was 2) to distribute events to all threads.
 -------- WWWW -------- G4Exception-END --------- WWWW -------
 ```
 
+Two PNG files will be generated in the current directory after `mingle run.mac`, one for the geometry and the other for geometry + trajectories. A new menu "Particle" is added to [menu.mac](menu.mac) to set the primary particle type, energy, direction, and position. A few more items are added to the "Run" menu to set the number of events.
+
 [Geant4]: https://geant4.web.cern.ch
 [MinGLE]: https://github.com/jintonic/mingle
 [B1]: https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/basic/B1/src/PrimaryGeneratorAction.cc#L67
