@@ -25,9 +25,9 @@ int main(int argc, char** argv)
   if (argc == 1) { // interactive mode
     G4UIExecutive ui(argc, argv);
     ui.SessionStart();
-  } else { // batch mode
-    G4String command = "/control/execute ";
-    G4UImanager::GetUIpointer()->ApplyCommand(command + argv[1]);
+  } else { // run a macro file in batch mode
+    G4String cmd = "/control/execute ", macroFile = argv[1];
+    G4UImanager::GetUIpointer()->ApplyCommand(cmd + macroFile);
   }
 
   delete run;
