@@ -8,3 +8,8 @@
 :place Envelope 1 World  r000 0  0   0
 :place Shape1 1 Envelope r000 0  20 -70
 :place Shape2 2 Envelope r000 0 -10  70
+
+:vis World OFF
+:color Envelope 0.1 0.1 0.9 0.2
+:color Shape1 0.9 0.1 0.1
+:color Shape2 0.1 0.9 0.1
