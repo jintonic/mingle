@@ -24,6 +24,11 @@
 /gui/addMenu vis Visualization
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
 /gui/addButton vis "Draw Detector Geometry" "/vis/drawVolume World"
+/gui/addButton vis "Draw Axes" "/vis/scene/add/axes"
+/gui/addButton vis "Draw Scale" "/vis/scene/add/scale"
+/gui/addButton vis "Set Background Color" "/vis/viewer/set/background"
+/gui/addButton vis "Set Light Position" "/vis/viewer/set/lightsVector"
+/gui/addButton vis "Toggle Auxiliary Edges" "/vis/viewer/set/auxiliaryEdge"
 /gui/addButton vis "Zoom in 20%" "/vis/viewer/zoom 1.2"
 /gui/addButton vis "Zoom out 20%" "/vis/viewer/zoom 0.8"
 /gui/addButton vis "Take Screenshot" "/vis/ogl/export detector.png"
@@ -38,3 +43,4 @@
 /gui/addButton help "List Particles" "/particle/list all"
 /gui/addButton help "List Processes (After /run/initialize)" "/process/list all"
 /gui/addButton help "List Units" "/units/list"
+/gui/addButton help "List Visualization Drivers" "/vis/list all"
