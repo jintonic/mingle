@@ -11,9 +11,19 @@
 /gui/addButton exe "A System Command" "/gui/system"
 /gui/addButton exe "A Macro File" "/control/execute"
 
+/gui/addMenu run Particle
+/gui/addButton run "Set Particle" "/gps/particle"
+/gui/addButton run "Set Energy" "/gps/energy"
+/gui/addButton run "Set Direction" "/gps/direction"
+/gui/addButton run "Set Position" "/gps/pos/centre"
+
 /gui/addMenu run Run
 /gui/addButton run "Initialize" "/run/initialize"
 /gui/addButton run "Set Number of Threads" "/run/numberOfThreads"
+/gui/addButton run "Set Number of Events" "/run/beamOn"
+/gui/addButton run "10 Events" "/run/beamOn 10"
+/gui/addButton run "100 Events" "/run/beamOn 100"
+/gui/addButton run "1000 Events" "/run/beamOn 1000"
 
 /gui/addMenu verb Verbosity
 /gui/addButton verb "Disable EM Process Verbosity" "/process/em/verbose 0"
@@ -25,10 +35,13 @@
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
 /gui/addButton vis "Draw Detector Geometry" "/vis/drawVolume World"
 /gui/addButton vis "Draw Axes" "/vis/scene/add/axes"
+/gui/addButton vis "Draw GPS" "/vis/scene/add/gps"
 /gui/addButton vis "Draw Scale" "/vis/scene/add/scale"
+/gui/addButton vis "Draw Trajectories" "/vis/scene/add/trajectories rich"
 /gui/addButton vis "Set Background Color" "/vis/viewer/set/background"
 /gui/addButton vis "Set Light Position" "/vis/viewer/set/lightsVector"
 /gui/addButton vis "Toggle Auxiliary Edges" "/vis/viewer/set/auxiliaryEdge"
+/gui/addButton vis "Toggle Trajectory Accumulation" "/vis/scene/endOfEventAction"
 /gui/addButton vis "Zoom in 20%" "/vis/viewer/zoom 1.2"
 /gui/addButton vis "Zoom out 20%" "/vis/viewer/zoom 0.8"
 /gui/addButton vis "Take Screenshot" "/vis/ogl/export detector.png"
