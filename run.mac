@@ -6,7 +6,7 @@
 /process/had/verbose 0
 
 # simulate one event per thread
-/run/numberOfThreads 5
+/run/numberOfThreads 8
 # load detector definition and physics processes
 /run/initialize
 
@@ -24,5 +24,16 @@
 # show in detail how an event is simulated
 /tracking/verbose 2
 
-# simulate 5 events
-/run/beamOn 5
+/vis/open TSG_FILE
+/vis/drawVolume
+/vis/scene/add/axes
+/vis/scene/add/gps
+/vis/scene/add/trajectories rich
+/vis/scene/endOfEventAction accumulate
+/vis/viewer/set/auxiliaryEdge
+/vis/viewer/set/background white
+/vis/viewer/set/viewpointVector 3 2 1
+/vis/viewer/refresh
+
+# simulate 8 events
+/run/beamOn 8
