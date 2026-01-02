@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 
   run->SetUserInitialization(new Detector); // load detector definition
 
-  if (argc == 1) { // interactive mode
+  if (argc == 1) { // start an interactive UI session
     G4UIExecutive ui(argc, argv);
     ui.SessionStart();
   } else { // run a macro file in batch mode
