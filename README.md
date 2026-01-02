@@ -62,9 +62,9 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 | 2 | [run][] | [v2][] | [G4RunManagerFactory][], and the lifecycle of a simulation (run, event, etc.) |
 | 3 | [physics][] | [v3][] | [G4PhysListFactory][], and validated, high-level physics models |
 | 4 | [detector][] | [v4][] | define detector geometry and materials using simple syntax in text files |
-| 5 | [gps][] | [v5][] | control particle generation with the [General Particle Source][] |
-| 6 | [vis][] | [v6][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
-| 7 | [scorer][] | [v7][] | use built-in command-line mesh scorers to generate histograms of dose, flux, etc. |
+| 5 | [vis][] | [v5][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
+| 6 | [gps][] | [v6][] | control particle generation with the [General Particle Source][] |
+| 7 | [scorer][] | [v7][] | use built-in mesh scorer commands to generate histograms of dose, flux, etc. |
 | 8 | [ntuple][] | [v8][] | use `G4AnalysisManager` to save ntuples in ROOT or CSV format |
 | 9 | [field][] | [v9][] | add electromagnetic field managers to simulate particle deflection |
 
