@@ -5,8 +5,6 @@
 /process/em/verbose 0
 /process/had/verbose 0
 
-# simulate one event per thread
-/run/numberOfThreads 8
 # load detector definition and physics processes
 /run/initialize
 
@@ -15,25 +13,42 @@
 /gps/energy 210 MeV
 /gps/direction 0 0 1
 /gps/pos/centre 0 0 -150 mm
-# start from a 80x80 mm2 square plane
 /gps/pos/type Plane
 /gps/pos/shape Square
 /gps/pos/halfx 80 mm
 /gps/pos/halfy 80 mm
 
-# show in detail how an event is simulated
-/tracking/verbose 2
+# define scoring volume
+/score/create/realWorldLogVol Shape1 2
+/score/quantity/volumeFlux flux
+/score/filter/particle protonFilter proton
+/score/close
+
+# define scoring mesh
+/score/create/boxMesh mesh
+/score/mesh/boxSize 10 10 0.4 cm
+/score/mesh/nBin 25 25 1
+/score/mesh/translate/xyz 0 0 11 cm
+/score/quantity/doseDeposit dose
+/score/close
+
+/score/list
 
 /vis/open TSG_FILE
 /vis/drawVolume
-/vis/scene/add/axes
 /vis/scene/add/gps
-/vis/scene/add/trajectories rich
-/vis/scene/endOfEventAction accumulate
 /vis/viewer/set/auxiliaryEdge
-/vis/viewer/set/background white
-/vis/viewer/set/viewpointVector 3 2 1
+/vis/viewer/set/background 0.094 0.094 0.094
+/vis/viewer/set/upVector -1 0 0
+/vis/viewer/set/viewpointVector -1 2 -1.9
 /vis/viewer/refresh
 
-# simulate 8 events
-/run/beamOn 8
+/vis/disable
+/run/printProgress 1000
+/run/beamOn 10000
+
+/vis/enable
+/score/drawProjection mesh dose
+/vis/viewer/refresh
+
+/score/dumpQuantityToFile Shape1 flux flux.csv
