@@ -17,11 +17,11 @@ e = b.array()
 # draw energy (e) distribution
 import matplotlib.pyplot as p
 p.hist(e, bins=100)
-p.xlabel('Energy deposition in Shape1 [MeV]')
-p.ylabel('Entries/(6 keV)')
+p.xlabel('Energy deposition in Shape1 (a cut cone) [MeV]')
+p.ylabel('Entries/(1.5 MeV)')
 p.title('Histogram Generated from Ntuple')
-p.text(0.038, 810, r'Full-absorption peak $\rightarrow$')
-p.text(0, 410, r'Back-scattering peak')
+p.text(35, 220, r'$\leftarrow$ due to protons passing through both')
+p.text(43, 205, r'front and back surfaces of the cut cone')
 p.grid(True)
 
 # show canvas
