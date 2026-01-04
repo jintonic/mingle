@@ -1,5 +1,7 @@
 #include <G4VUserDetectorConstruction.hh>
+#include <G4GlobalMagFieldMessenger.hh>
 #include <G4tgbVolumeMgr.hh>
+#include <G4AutoDelete.hh>
 class Detector : public G4VUserDetectorConstruction
 {
   public:
@@ -7,6 +9,9 @@ class Detector : public G4VUserDetectorConstruction
       G4tgbVolumeMgr::GetInstance()->AddTextFile("detector.tg");
       return G4tgbVolumeMgr::GetInstance()->ReadAndConstructDetector();
     } ///< load detector definition from a text file "detector.tg"
+    void ConstructSDandField() {
+      G4AutoDelete::Register(new G4GlobalMagFieldMessenger());
+    } ///< enable /globalField/ to set uniform B-field
 };
 
 #include <G4VUserPrimaryGeneratorAction.hh>
@@ -61,3 +66,5 @@ int main(int argc, char** argv)
   delete vis;
   delete run;
 }
+// -*- C++; indent-tabs-mode:nil; tab-width:2 -*-
+// vim: ft=cpp:ts=2:sts=2:sw=2:et
