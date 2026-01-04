@@ -7,9 +7,9 @@
 /gui/addMenu det Detector
 /gui/addButton det "Check Volume Overlapping (After /run/initialize)" "/geometry/test/run"
 /gui/addButton det "Create A Scorer for Volume" "/score/create/realWorldLogVol"
-/gui/addButton det "Enable Dose Calculation in Scorer" "/score/quantity/doseDeposit"
++/gui/addButton det "Record Dose Deposit" "/score/quantity/doseDeposit"
 /gui/addButton det "Close Scorer" "/score/close"
-/gui/addButton det "Dunp Quality to File" "/score/dumpQuantityToFile"
+/gui/addButton det "Dump Quality to File" "/score/dumpQuantityToFile"
 /gui/addButton det "Draw Projection" "/score/drawProjection"
 
 /gui/addMenu exe Execute
@@ -35,6 +35,7 @@
 /gui/addButton verb "Disable Hadronic Process Verbosity" "/process/had/verbose 0"
 /gui/addButton verb "Enable Run Verbosity" "/run/verbose 2"
 /gui/addButton verb "Set Macro Cmd Verbosity" "/control/verbose"
+/gui/addButton verb "Set Tracking Verbosity" "/tracking/verbose"
 
 /gui/addMenu vis Visualization
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
