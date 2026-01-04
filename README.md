@@ -35,9 +35,13 @@ cmake -B build
 cmake --build build --config Release
 # install mingle to /path/to/Geant4/bin
 cmake --install build --config Release
-# run mingle interactively in the current folder
-mingle
+# run mingle in batch mode with run.mac in the current folder
+mingle run.mac
 ```
+
+Three PNG files will be created, the first visualizes the geometry, the second shows the trajectories of the particles, and the third shows the proton flux after all detector volumes. Also created will be a [ROOT][] file `scoring.root` containing the energy deposit in the volume `Shape1` defined in [detector.tg](detector.tg).
+
+Most operations in [run.mac](run.mac) can also be executed one by one in the Geant4 GUI. This is achieved by running `mingle` and then loading [menu.mac](menu.mac) in the launched Geant4 GUI. [menu.mac](menu.mac) creates a menu in the Geant4 GUI, items in the menu can be executed one by one upon selection.
 
 > **Note:**
 - lines start with `#` are comments, they cannot be run.
@@ -58,15 +62,17 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 | Milestone | Branch | Tag | New Concepts |
 | :--- | :--- | :--- | :--- |
 | 0 | [ui][] | [v0][] | [G4UIExecutive][], and navigate the macro command tree |
-| 1 | [batch][] | [v1][] | transition from interactive exploration to automated batch-mode execution |
+| 1 | [batch][] | [v1][] | transition from interactive exploration to automated [batch mode][] execution |
 | 2 | [run][] | [v2][] | [G4RunManagerFactory][], and the lifecycle of a simulation (run, event, etc.) |
 | 3 | [physics][] | [v3][] | [G4PhysListFactory][], and validated, high-level physics models |
-| 4 | [detector][] | [v4][] | define detector geometry and materials using simple syntax in text files |
-| 5 | [vis][] | [v5][] | implement `G4VisExecutive` to render 3D geometry and trajectories |
+| 4 | [detector][] | [v4][] | define detector geometry and materials using [simple syntax in text][] files |
+| 5 | [vis][] | [v5][] | [G4VisExecutive][], and [render][] 3D geometry |
 | 6 | [gps][] | [v6][] | control particle generation with the [General Particle Source][] |
-| 7 | [scorer][] | [v7][] | use built-in mesh scorer commands to generate histograms of dose, flux, etc. |
-| 8 | [ntuple][] | [v8][] | use `G4AnalysisManager` to save ntuples in ROOT or CSV format |
-| 9 | [field][] | [v9][] | add electromagnetic field managers to simulate particle deflection |
+| 7 | [scorer][] | [v7][] | use built-in [/score/][] commands to record dose, flux, etc. |
+| 8 | [ntuple][] | [v8][] | [G4TScoreNtupleWriter][], and [create histograms from ntuples](drawE.py) |
+| 9 | [field][] | [v9][] | [G4GlobalMagFieldMessenger][] to create uniform B-field |
+
+[mingle.cc](mingle.cc) grows from [v0][] to [v9][] step by step, so does [menu.mac](menu.mac). [run.mac](run.mac), however, is tailored to individual milestones to better showcase features added to each milestone. [mingle.cc](mingle.cc) and [menu.mac](menu.mac) are identical in the [main](main) and [field](field) branches, but [run.mac](run.mac) in [main](main) is more complex than [run.mac](run.mac) in [field](field).
 
 This structure serves the following pedagogic purposes:
 
@@ -78,11 +84,13 @@ This structure serves the following pedagogic purposes:
 
 New to [Git][]? You can explore every stage of this project directly on the GitHub website using the branch and tag selectors at the top of the file list. However, to run the code locally, please use the terminal commands below.
 
-Tags allow you to inspect the code at specific points in its evolution without changing your files:
+Both branches and tags allow you to inspect the code at specific points in its evolution without changing your files:
 
 ```bash
 # View the main source file for the detector geometry milestone
 git show v4:mingle.cc
+# or
+git show detector:mingle.cc
 ```
 
 To see exactly what code was added to the main application between two milestones:
@@ -90,6 +98,8 @@ To see exactly what code was added to the main application between two milestone
 ```bash
 # See code changes between detector (v4) and primary particle (v5)
 git diff v4 v5 mingle.cc
+# or
+git diff detector vis mingle.cc
 ```
 
 To move your physical working directory to a specific stage to run the simulation or experiment with the code:
@@ -121,6 +131,7 @@ git switch main
 Later, use `git stash pop` to bring your changes back.
 
 [Geant4]: https://geant4.web.cern.ch
+[ROOT]: https://root.cern
 [Git]: https://git-scm.com
 [CMake]: https://cmake.org
 [post_installation]: https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/postinstall.html
@@ -128,6 +139,13 @@ Later, use `git stash pop` to bring your changes back.
 [G4PhysListFactory]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/UserActions/mandatoryActions.html?highlight=physlistfac#building-physics-list-using-factory
 [G4UIExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html?highlight=g4uiexecutive#how-to-select-interface-in-your-applications
 [General Particle Source]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
+[batch mode]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/executeProgram.html
+[simple syntax in text]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/Geometry/geomASCII.html
+[G4VisExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Visualization/visexecutable.html#how-to-realize-visualization-drivers-in-an-executable
+[render]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Visualization/visualization.html
+[/score/]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/commandScore.html
+[G4TScoreNtupleWriter]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html#score-ntuple-writer
+[G4GlobalMagFieldMessenger]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/electroMagneticField.html#creating-a-uniform-magnetic-field-with-user-commands
 
 [ui]: https://github.com/jintonic/mingle/tree/ui
 [batch]: https://github.com/jintonic/mingle/tree/batch
@@ -139,6 +157,7 @@ Later, use `git stash pop` to bring your changes back.
 [scorer]: https://github.com/jintonic/mingle/tree/scorer
 [ntuple]: https://github.com/jintonic/mingle/tree/ntuple
 [field]: https://github.com/jintonic/mingle/tree/field
+[main]: https://github.com/jintonic/mingle
 
 [v0]: https://github.com/jintonic/mingle/releases/tag/v0
 [v1]: https://github.com/jintonic/mingle/releases/tag/v1
