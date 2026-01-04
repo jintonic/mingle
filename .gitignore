@@ -1,5 +1,6 @@
 # ignore executable
 mingle
+mingle.exe
 
 # ignore build directory
 *build*
@@ -21,6 +22,8 @@ mingle
 # ignore data output
 *.root
 *.csv
+*.tab
+*.txt
 
 # ignore cmake generated files
 .qt
@@ -29,3 +32,5 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 
+# ignore macro command manual
+_*.html
