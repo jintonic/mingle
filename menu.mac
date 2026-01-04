@@ -11,7 +11,7 @@
 /gui/addButton det "Record Energy Deposit" "/score/quantity/energyDeposit"
 /gui/addButton det "Close Scorer" "/score/close"
 /gui/addButton det "Dump Quality to File" "/score/dumpQuantityToFile"
-/gui/addButton det "Draw Projection" "/score/drawProjection"
+/gui/addButton det "Draw Score Projection" "/score/drawProjection"
 
 /gui/addMenu exe Execute
 /gui/addButton exe "A System Command" "/gui/system"
