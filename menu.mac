@@ -4,15 +4,13 @@
 # clear existing menu
 /gui/clearMenu
 
-/gui/addMenu ana Analysis
-/gui/addButton ana "Create A Scorer for Volume" "/score/create/realWorldLogVol"
-/gui/addButton ana "Enable Dose Calculation in Scorer" "/score/quantity/doseDeposit"
-/gui/addButton ana "Close Scorer" "/score/close"
-/gui/addButton ana "Dunp Quality to File" "/score/dumpQuantityToFile"
-/gui/addButton ana "Draw Projection" "/score/drawProjection"
-
 /gui/addMenu det Detector
 /gui/addButton det "Check Volume Overlapping (After /run/initialize)" "/geometry/test/run"
+/gui/addButton det "Create A Scorer for Volume" "/score/create/realWorldLogVol"
+/gui/addButton det "Enable Dose Calculation in Scorer" "/score/quantity/doseDeposit"
+/gui/addButton det "Close Scorer" "/score/close"
+/gui/addButton det "Dunp Quality to File" "/score/dumpQuantityToFile"
+/gui/addButton det "Draw Projection" "/score/drawProjection"
 
 /gui/addMenu exe Execute
 /gui/addButton exe "A System Command" "/gui/system"
