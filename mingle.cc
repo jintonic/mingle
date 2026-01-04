@@ -36,7 +36,7 @@ class Action : public G4VUserActionInitialization
 int main(int argc, char** argv)
 {
   auto run = G4RunManagerFactory::CreateRunManager();
-	G4ScoringManager::GetScoringManager();  // activate command-based scorer
+  G4ScoringManager::GetScoringManager();  // activate command-based scorer
   // load default physics list, or the one specified by $PHYSLIST
   G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
   run->SetUserInitialization(new Detector); // load detector definition
