@@ -27,8 +27,10 @@ class Action : public G4VUserActionInitialization
     void Build() const { SetUserAction(new Generator); }
 };
 
+#include <G4TScoreNtupleWriter.hh>
 #include <G4RunManagerFactory.hh>
 #include <G4PhysListFactory.hh>
+#include <G4AnalysisManager.hh>
 #include <G4ScoringManager.hh>
 #include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
@@ -36,7 +38,10 @@ class Action : public G4VUserActionInitialization
 int main(int argc, char** argv)
 {
   auto run = G4RunManagerFactory::CreateRunManager();
-	G4ScoringManager::GetScoringManager();  // activate command-based scorer
+  G4ScoringManager::GetScoringManager();  // activate command-based scorer
+  G4TScoreNtupleWriter<G4AnalysisManager> writer; // enable ntuple recording
+  if (run->GetRunManagerType() != G4RunManager::sequentialRM)
+    writer.SetNtupleMerging(true); // merge ntuples created in multi-threads
   // load default physics list, or the one specified by $PHYSLIST
   G4PhysListFactory f; run->SetUserInitialization(f.ReferencePhysList());
   run->SetUserInitialization(new Detector); // load detector definition
