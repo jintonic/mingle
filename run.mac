@@ -8,47 +8,16 @@
 # load detector definition and physics processes
 /run/initialize
 
-# mimick Geant4 basic example B1
-/gps/particle proton
-/gps/energy 210 MeV
+# use 60 keV gamma to check energy spectrum
+/gps/particle gamma
+/gps/energy 60 keV
 /gps/direction 0 0 1
-/gps/pos/centre 0 0 -150 mm
-/gps/pos/type Plane
-/gps/pos/shape Square
-/gps/pos/halfx 80 mm
-/gps/pos/halfy 80 mm
+/gps/pos/centre 0 2 -11 cm
 
-# define scoring volume
+# record energy deposit in Shape1
 /score/create/realWorldLogVol Shape1 2
-/score/quantity/volumeFlux flux
-/score/filter/particle protonFilter proton
+/score/quantity/energyDeposit e
 /score/close
 
-# define scoring mesh
-/score/create/boxMesh mesh
-/score/mesh/boxSize 10 10 0.4 cm
-/score/mesh/nBin 25 25 1
-/score/mesh/translate/xyz 0 0 11 cm
-/score/quantity/doseDeposit dose
-/score/close
-
-/score/list
-
-/vis/open TSG_FILE
-/vis/drawVolume
-/vis/scene/add/gps
-/vis/viewer/set/auxiliaryEdge
-/vis/viewer/set/background 0.094 0.094 0.094
-/vis/viewer/set/upVector -1 0 0
-/vis/viewer/set/viewpointVector -1 2 -1.9
-/vis/viewer/refresh
-
-/vis/disable
 /run/printProgress 1000
 /run/beamOn 10000
-
-/vis/enable
-/score/drawProjection mesh dose
-/vis/viewer/refresh
-
-/score/dumpQuantityToFile Shape1 flux flux.csv
