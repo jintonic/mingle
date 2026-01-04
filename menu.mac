@@ -20,6 +20,7 @@
 /gui/addButton verb "Disable Hadronic Process Verbosity" "/process/had/verbose 0"
 /gui/addButton verb "Enable Run Verbosity" "/run/verbose 2"
 /gui/addButton verb "Set Macro Cmd Verbosity" "/control/verbose"
+/gui/addButton verb "Set Tracking Verbosity" "/tracking/verbose"
 
 /gui/addMenu vis Visualization
 /gui/addButton vis "Open OpenGL Viewer" "/vis/open OGL"
@@ -27,7 +28,9 @@
 /gui/addButton vis "Draw Axes" "/vis/scene/add/axes"
 /gui/addButton vis "Draw Scale" "/vis/scene/add/scale"
 /gui/addButton vis "Set Background Color" "/vis/viewer/set/background"
-/gui/addButton vis "Set Light Position" "/vis/viewer/set/lightsVector"
+/gui/addButton vis "Set Lights Vector" "/vis/viewer/set/lightsVector"
+/gui/addButton vis "Set Up Vector" "/vis/viewer/set/upVector"
+/gui/addButton vis "Set Viewpoint Vector" "/vis/viewer/set/viewpointVector"
 /gui/addButton vis "Toggle Auxiliary Edges" "/vis/viewer/set/auxiliaryEdge"
 /gui/addButton vis "Zoom in 20%" "/vis/viewer/zoom 1.2"
 /gui/addButton vis "Zoom out 20%" "/vis/viewer/zoom 0.8"
