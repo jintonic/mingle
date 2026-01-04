@@ -7,7 +7,7 @@
 /gui/addMenu det Detector
 /gui/addButton det "Check Volume Overlapping (After /run/initialize)" "/geometry/test/run"
 /gui/addButton det "Create A Scorer for Volume" "/score/create/realWorldLogVol"
-+/gui/addButton det "Record Dose Deposit" "/score/quantity/doseDeposit"
+/gui/addButton det "Record Dose Deposit" "/score/quantity/doseDeposit"
 /gui/addButton det "Close Scorer" "/score/close"
 /gui/addButton det "Dump Quality to File" "/score/dumpQuantityToFile"
 /gui/addButton det "Draw Projection" "/score/drawProjection"
