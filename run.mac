@@ -8,16 +8,27 @@
 # load detector definition and physics processes
 /run/initialize
 
-# use 60 keV gamma to check energy spectrum
-/gps/particle gamma
-/gps/energy 60 keV
-/gps/direction 0 0 1
-/gps/pos/centre 0 2 -11 cm
+/globalField/verbose 1
+/globalField/setValue 0 0 10 tesla
 
-# record energy deposit in Shape1
-/score/create/realWorldLogVol Shape1 2
-/score/quantity/energyDeposit e
-/score/close
+# use mu- to show bending from B-field
+/gps/particle mu-
+/gps/energy 100 MeV
+/gps/direction 0 1 0
+/gps/pos/centre 8 0 0 cm
 
-/run/printProgress 1000
-/run/beamOn 10000
+/vis/open TSG_FILE
+/vis/drawVolume
+/vis/scene/add/magneticField 5 lightArrow
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+/vis/viewer/set/viewpointVector 0 0 1
+/vis/geometry/set/visibility Shape1 ! 0
+/vis/geometry/set/visibility Shape2 ! 0
+/vis/viewer/refresh
+
+# draw negative particle trajectories
+/vis/filtering/trajectories/create/chargeFilter
+/vis/filtering/trajectories/chargeFilter-0/add -1
+/run/beamOn 10
+/vis/viewer/refresh
