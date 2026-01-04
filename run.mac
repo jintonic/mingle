@@ -1,22 +1,68 @@
-# display applied commands on screen
-/control/verbose
+# avoid intertwined outputs from threads
+/control/cout/useBuffer
 
-# construct detector geometry and physics processes
+# disable massive output that may confuse a beginner
+/process/em/verbose 0
+/process/had/verbose 0
+
+# load detector definition and physics processes
 /run/initialize
 
-# 2.6 MeV gamma-rays shot to x direction from (-20,0,0) cm
-/gps/particle gamma
-/gps/energy 2.6 MeV
-/gps/pos/centre -20 0 0 cm
-/gps/direction 1 0 0
+# check detector geometry
+/geometry/test/run
+/vis/ASCIITree/verbose 13
+/vis/drawTree
 
-# save energy deposition in volume named CsI
-/score/create/realWorldLogVol CsI
+# mimick Geant4 basic example B1
+/gps/particle proton
+/gps/energy 210 MeV
+/gps/direction 0 0 1
+/gps/pos/centre 0 0 -150 mm
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/halfx 80 mm
+/gps/pos/halfy 80 mm
+
+# visualize geometry and trajectories
+/vis/open TSG_FILE
+/vis/drawVolume Envelope
+/vis/scene/add/gps
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+/vis/viewer/set/auxiliaryEdge
+/vis/viewer/set/background 0.094 0.094 0.094
+/vis/viewer/set/upVector -1 0 0
+/vis/viewer/set/viewpointVector -1 2 -1.8
+/vis/viewer/refresh
+
+# check 10 events
+/tracking/verbose 2
+/run/beamOn 10
+/vis/viewer/refresh
+
+# record energy deposit in Shape1
+/score/create/realWorldLogVol Shape1 2
 /score/quantity/energyDeposit e
 /score/close
+
+# record proton flux after all volumes
+/score/create/boxMesh mesh
+/score/mesh/boxSize 10 10 0.4 cm
+/score/mesh/nBin 25 25 1
+/score/mesh/translate/xyz 0 0 11 cm
+/score/quantity/cellFlux flux
+/score/filter/particle protonFilter proton
+/score/close
+
 /score/list
 
-/run/verbose 2
+# simulate many events
+/vis/disable
+/tracking/verbose 0
 /run/printProgress 1000
 /run/beamOn 10000
 
+# visualize flux
+/vis/enable
+/score/drawProjection mesh flux
+/vis/viewer/refresh
