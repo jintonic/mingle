@@ -4,9 +4,12 @@ The visualization can also be tuned interactively. Run `mingle` to start a Geant
 
 In [mingle.cc](mingle.cc), `ui` is created as a pointer instead of a reference to [G4UIExecutive][] so that the visualization can be enabled between the UI creation and session start. This is required in Geant4.11 and later to allow [automatic visualization driver selection](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Visualization/commandcontrol.html#choosing-a-graphics-viewer-vis-open-command).
 
+A new macro command set `/param/` shows up after `/run/initialize`. It is used for fast simulation (or [parameterization][]) control and is beyond the scope of [MinGLE][].
+
 [v5]: https://github.com/jintonic/mingle/releases/tag/v5
 [vis]: https://github.com/jintonic/mingle/tree/vis
 [MinGLE]: https://github.com/jintonic/mingle
 [Geant4]: https://geant4.web.cern.ch
 [visualization]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/visualization.html
 [G4UIExecutive]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/GettingStarted/graphicalUserInterface.html#how-to-select-interface-in-your-applications
+[parameterization]: https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/TrackingAndPhysics/physicsProcess.html#parameterisation
