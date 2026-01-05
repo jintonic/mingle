@@ -25,7 +25,7 @@
 If you know how to use [Git][] and [CMake][] in a Linux or Mac terminal, please follow the instruction below. It also works for Windows users in a [Git Bash](https://gitforwindows.org) terminal. If you don't, please follow [this YouTube tutorial](https://youtu.be/6xqCtS38SXQ).
 
 ```sh
-# download mingle git repository from github to a local hard disk
+# download mingle git repository from GitHub to a local hard disk
 git clone https://github.com/jintonic/mingle
 # get into the mingle directory
 cd mingle
@@ -39,21 +39,21 @@ cmake --install build --config Release
 mingle run.mac
 ```
 
+> **Note:**
+- lines start with `#` are comments, they cannot be run.
+- `--config Release` is primarily for Visual Studio on Windows, it can be ignored on Linux and MacOS.
+- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`.
+- The `cmake --install` command will install the `mingle` executable to the `bin/` directory of your Geant4 installation path (detected during the `cmake -B build` step) based on the settings in [CMakeLists.txt](CMakeLists.txt). This saves you a manual configuration step. Since a successful Geant4 installation already requires its `bin/` folder to be in your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (usually via the [geant4.sh][post_installation] or [geant4.bat][post_installation] setup scripts), `mingle` becomes globally available immediately. You can simply type `mingle` from any directory in your terminal to start the application.
+
 Three PNG files will be created, the first visualizes the geometry, the second shows the trajectories of the particles, and the third shows the proton flux after all detector volumes. Also created will be a [ROOT][] file `scoring.root` containing the energy deposit in the volume `Shape1` defined in [detector.tg](detector.tg).
 
 Most operations in [run.mac](run.mac) can also be executed one by one in the Geant4 GUI. This is achieved by running `mingle` and then loading [menu.mac](menu.mac) in the launched Geant4 GUI. [menu.mac](menu.mac) creates a menu in the Geant4 GUI, items in the menu can be executed one by one upon selection.
-
-> **Note:**
-- lines start with `#` are comments, they cannot be run.
-- `--config Release` is primarily for Windows/Visual Studio, it can be ignored on Linux and MacOS.
-- Commands are case sensitive, e.g. `-B` cannot be replaced by `-b`.
-- The `cmake --install` command will install the `mingle` executable to the `bin/` directory of your Geant4 installation path (detected during the `cmake -B build` step) based on the settings in [CMakeLists.txt](CMakeLists.txt). This saves you a manual configuration step. Since a successful Geant4 installation already requires its `bin/` folder to be in your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (usually via the [geant4.sh][post_installation] or [geant4.bat][post_installation] setup scripts), `mingle` becomes globally available immediately. You can simply type `mingle` from any directory in your terminal to start the application.
 
 ## Guided Development
 
 There are two primary ways to teach a complex software framework like Geant4. The first is to disassemble a finished, feature-complete application to see how it works. However, for a beginner, this "reverse engineering" often feels like trying to learn how an engine works by looking at a fully assembled car. The second way, and the one MinGLE adopts, is to evolve the code step-by-step. By building the application one component at a time, you see the specific necessity of every line of code as it is added. This "bottom-up" approach ensures that you are never overwhelmed by boilerplate, as each stage introduces exactly one new concept.
 
-To facilitate this step-by-step journey, MinGLE utilizes two core features of the [Git][] version control system: branches and tags. Think of a branch as a living workspace dedicated to a specific topic, like [ui][] or [physics][]. It is a place where code is active and can be modified. A tag is like a high-resolution "snapshot" or a "version", like [v0][]. It marks a specific moment in time when that stage was perfectly finished and tested.
+To facilitate this step-by-step journey, MinGLE utilizes two core features of the [Git][] version control system: branches and tags. Think of a branch as a living workspace dedicated to a specific topic, like [ui][] or [physics][]. It is a place where code is active and can be modified. A tag is like a "snapshot" or a "version", like [v0][]. It marks a specific moment in time when that stage was perfectly finished and tested.
 
 In a typical Geant4 example, the source code contains hundreds of lines of boilerplate. In `MinGLE`'s guided development roadmap built with Git branches and tags,
 - each branch (e.g., [ui][]) represents a learning milestone associated with a specific Geant4 component, and
@@ -72,7 +72,7 @@ In a typical Geant4 example, the source code contains hundreds of lines of boile
 | 8 | [ntuple][] | [v8][] | [G4TScoreNtupleWriter][], and [create histograms from ntuples](drawE.py) |
 | 9 | [field][] | [v9][] | [G4GlobalMagFieldMessenger][] to create uniform B-field |
 
-[mingle.cc](mingle.cc) grows from [v0][] to [v9][] step by step, so does [menu.mac](menu.mac). [run.mac](run.mac), however, is tailored to individual milestones to better showcase features added to each milestone. [mingle.cc](mingle.cc) and [menu.mac](menu.mac) are identical in the [main](main) and [field](field) branches, but [run.mac](run.mac) in [main](main) is more complex than [run.mac](run.mac) in [field](field).
+[mingle.cc](mingle.cc) grows from [v0][] to [v9][] step by step, so does [menu.mac](menu.mac). [run.mac](run.mac), however, is tailored to individual milestones to better showcase features added to each milestone. [mingle.cc](mingle.cc) and [menu.mac](menu.mac) are identical in the [main][] and [field][] branches, but [run.mac](run.mac) in [main][] is more complex than [run.mac in field](https://github.com/jintonic/mingle/blob/field/run.mac).
 
 This structure serves the following pedagogic purposes:
 
@@ -84,8 +84,14 @@ This structure serves the following pedagogic purposes:
 
 New to [Git][]? You can explore every stage of this project directly on the GitHub website using the branch and tag selectors at the top of the file list. However, to run the code locally, please use the terminal commands below.
 
-Both branches and tags allow you to inspect the code at specific points in its evolution without changing your files:
+List existing branches and tags:
+```bash
+git branch -a
+git tag
+```
+A freshly cloned repository only has one branch: `main`. The `-a` option lists both local and remote branches.
 
+Both branches and tags allow you to inspect the code at specific points in its evolution without changing your files:
 ```bash
 # View the main source file for the detector geometry milestone
 git show v4:mingle.cc
@@ -94,36 +100,32 @@ git show detector:mingle.cc
 ```
 
 To see exactly what code was added to the main application between two milestones:
-
 ```bash
-# See code changes between detector (v4) and primary particle (v5)
+# See code changes between detector (v4) and vis (v5)
 git diff v4 v5 mingle.cc
 # or
 git diff detector vis mingle.cc
 ```
 
 To move your physical working directory to a specific stage to run the simulation or experiment with the code:
-
 ```bash
 # Switch to the detector branch
 git switch detector
 ```
+A local branch `detector` is created based on the remote branch `detector`, and your working directory is switched to the `detector` branch.
 
 When you are finished exploring and want to return to the complete version of the code:
-
 ```bash
 # Return to the main branch
 git switch main
 ```
 
 If you have modified the code while exploring and try to switch branches, Git may prevent the switch to protect your work. If you want to discard changes before returning:
-
 ```bash
 git restore .
 git switch main
 ```
 If you want to keep your experiments for later:
-
 ```bash
 git stash
 git switch main
