@@ -18,7 +18,7 @@ According to [this discussion][] in the Geant4 forum, [G4TScoreNtupleWriter][] a
 
 A Python script [drawE.py](drawE.py) is provided to draw the energy spectrum recorded in `scoring.root` using [uproot][] and [matplotlib][] for users who are not familiar with [ROOT][].
 
-[menu.mac](menu.mac) is extended to allow users to pick a volume from the Geant4 UI and record the energy deposit in it.
+[menu.mac](menu.mac) is extended to allow users to pick a volume using the Geant4 GUI and record the energy deposit in it.
 
 [v8]: https://github.com/jintonic/mingle/releases/tag/v8
 [ntuple]: https://github.com/jintonic/mingle/tree/ntuple
