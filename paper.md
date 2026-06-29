@@ -56,12 +56,12 @@ Existing Geant4 pedagogical assets broadly fall into two categories: standard to
 
 # Research Impact Statement
 
-MinGLE introduces a flexible, low-friction template designed to accelerate prototype simulation development across multi-disciplinary research frameworks, including low-background radiation physics, medical imaging development, and space weather instrumentation. By eliminating multi-file boilerplate layout barriers, researchers can swiftly spin up sandboxed testing environments to characterize novel detector materials or configure complex spatial geometry distributions. Furthermore, its structured "branch-as-chapter" versioning pipeline offers a clear framework for onboarding undergraduate and graduate research assistants into collaborative physics workflows, minimizing structural training overhead and expediting active production contributions.
+MinGLE introduces a flexible, low-friction template designed to accelerate prototype simulation development across multi-disciplinary research frameworks, including low-background radiation physics, medical imaging development, and space science instrumentation. By eliminating multi-file boilerplate layout barriers, researchers can swiftly spin up sandboxed testing environments to characterize novel detector materials or configure complex spatial geometry distributions. Furthermore, its structured "branch-as-chapter" versioning pipeline offers a clear framework for onboarding undergraduate and graduate research assistants into collaborative physics workflows, minimizing structural training overhead and expediting active production contributions.
 
-## 2. Distributed Documentation ("Branch-as-Chapter")
+## Distributed Documentation ("Branch-as-Chapter")
 Rather than utilizing a monolithic manual, MinGLE distributes its documentation across its version control system. The `main` branch acts as a "syllabus," while individual feature branches serve as "chapters" with specialized `README.md` and `run.mac` files. This isolates complexity and supports a "just-in-time" learning architecture.
 
-## 3. Advanced Developer Experience
+## Advanced Developer Experience
 MinGLE provides out-of-the-box support for the JSON Compilation Database standard (`compile_commands.json`) [@jsoncompilation] via CMake. By exporting compile commands, modern editors and language servers (such as VS Code [@vscode], Neovim [@neovim], or CLion [clion]) can automatically resolve Geant4 header paths, providing intelligent auto-completion, error checking, and code navigation without manual configuration.
 
 # Guided Development Roadmap
